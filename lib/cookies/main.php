@@ -1,0 +1,1 @@
+<script src='./lib/cookies/main.js'></script>
