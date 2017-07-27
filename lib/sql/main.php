@@ -67,7 +67,7 @@ class Database {
 			$where_cond = "";
 
 			for($i=0; $i<sizeof($where); $i++) {
-				$where_cond .= $where[$i][0].' = :'.$where[$i][0];
+				$where_cond .= 'LOWER('.$where[$i][0].') = :'.$where[$i][0];
 				if($i!=sizeof($where)-1) {
 					$where_cond .= ' AND '; //@ADD : OR/NOT/AND
 				}
@@ -81,7 +81,7 @@ class Database {
 					$query->bindValue(':'.$where[$i][0],$where[$i][1],PDO::PARAM_INT);
 
 				} else {
-					$query->bindValue(':'.$where[$i][0],$where[$i][1],PDO::PARAM_STR);
+					$query->bindValue(':'.$where[$i][0],strtolower($where[$i][1]),PDO::PARAM_STR);
 				}
 			}
 
@@ -146,7 +146,7 @@ class Database {
 	OUTPUT: -
 	*/
 	public function updateContent($table,$data,$where) {
-		if(is_string($table)&&is_array($where)) {
+		if(is_string($table)&&is_array($data)&&is_array($where)) {
 
 			$where_cond = "";
 			for($i=0; $i<sizeof($where); $i++) {
@@ -189,6 +189,33 @@ class Database {
 		}
 	}
 
+	public function removeContent($table,$where) {
+		if(is_string($table)&&is_array($where)) {
+
+			$where_cond = "";
+			for($i=0; $i<sizeof($where); $i++) {
+				$where_cond .= $where[$i][0].' = :'.$where[$i][0];
+				if($i!=sizeof($where)-1) {
+					$where_cond .= ' AND '; //@ADD : OR/NOT/AND
+				}
+			}
+
+			$query = $this->bd->prepare('DELETE FROM '.$table.' WHERE '.$where_cond);
+
+			for($i=0; $i<sizeof($where); $i++) {
+				if($where[$i][2]=="int") {
+					$query->bindValue(':'.$where[$i][0],$where[$i][1],PDO::PARAM_INT);
+
+				} else {
+					$query->bindValue(':'.$where[$i][0],$where[$i][1],PDO::PARAM_STR);
+				}
+			}
+
+			$query->execute();
+			$query->CloseCursor();
+		}
+	}
+
 	/* drawTableByContent
 	INPUT: table (string), min (int), size (int), order (string)
 	OUTPUT: -
@@ -216,8 +243,7 @@ class Database {
 	Parametre : table ( string )
 	Retourne : ( int )
 	*/
-	public function count($table)
-	{
+	public function count($table) {
 		return $this->bd->query("SELECT COUNT(*) FROM ".$table)->fetchColumn();
 	}
 }
