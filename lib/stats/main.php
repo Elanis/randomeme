@@ -50,7 +50,7 @@ if(!isset($_SESSION['visited']) || (isset($_SESSION['visited']) && $_SESSION['vi
         $visit["ip"] = get_client_ip();
     }
     $visit["url"] = full_url($_SERVER);
-    $visit["origin"] = $_SERVER['HTTP_REFERER'];
+    $visit["origin"] = (isset($_SERVER['HTTP_REFERER']))?$_SERVER['HTTP_REFERER']:null;
     $visit["time"] = time();
 
     $bulkVisit = new MongoDB\Driver\BulkWrite(['ordered' => true]);

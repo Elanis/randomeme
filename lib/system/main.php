@@ -141,7 +141,7 @@ OUTPUT: Informations ( table ) */
 function MemoryStats()
 {
 	$memory = array();
-	if (!($memory['total'] = shell_exec('grep MemTotal /proc/meminfo | awk \'{print $2}\'')))
+	if (!($memory['total'] = (int)shell_exec('grep MemTotal /proc/meminfo | awk \'{print $2}\'')))
 	{
 		$memory['total'] = 0;
 	}
@@ -173,14 +173,14 @@ OUTPUT: Informations ( table ) */
 function SwapStats()
 {
 	$swap = array();
-	if (!($swap['total'] = shell_exec('grep SwapTotal /proc/meminfo | awk \'{print $2}\'')))
+	if (!($swap['total'] = (int) shell_exec('grep SwapTotal /proc/meminfo | awk \'{print $2}\'')))
 	{
 		$swap['total'] = 0;
 	}
 	
 	$swap['free'] = 0;
 
-	if (!($swap['free'] = shell_exec('grep SwapFree /proc/meminfo | awk \'{print $2}\'')))
+	if (!($swap['free'] = (int) shell_exec('grep SwapFree /proc/meminfo | awk \'{print $2}\'')))
 	{
 	    $swap['free'] = 0;
 	}
