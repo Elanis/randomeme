@@ -1,0 +1,23 @@
+.percentBar {
+	margin: 0;
+	padding: 0;
+	height: 100%;
+	padding-left: 5px;
+}
+/********************
+		Skills		
+********************/
+.skills {
+	margin: 10px;
+	margin-left: 5%;
+	width: 90%;
+	height: auto;
+	background-color: #EEEEEE;
+	color: white;
+	height: 1.75em;
+}
+.skill-name {
+	padding-left: 5px;
+	float: left;
+	width: 50%;
+}

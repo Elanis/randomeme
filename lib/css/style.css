@@ -1,0 +1,194 @@
+body
+{
+	background-color: black;
+	background-attachment: fixed;
+	background-position: center;
+	background-repeat: no-repeat;
+    background-size: cover;
+    font-family: Segoe UI Light;
+    font-size: 1.3em;
+    color: white;
+    font-weight: bold;
+}
+#audio {
+	display: none;
+}
+#video {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    -ms-transform: translateX(-50%) translateY(-50%);
+    -moz-transform: translateX(-50%) translateY(-50%);
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);
+	border: 0;
+	margin: 0;
+	padding: 0;
+}
+#play {
+    position: fixed;
+    opacity: 0.65;
+    top: 50%;
+    left: 50%;
+    width: 20%;
+    max-width: 256px;
+    -ms-transform: translateX(-50%) translateY(-50%);
+    -moz-transform: translateX(-50%) translateY(-50%);
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);
+    z-index: 101;
+    display: none; /* That's Just for android */
+}
+#link-to-copy {
+    opacity: 0;
+}
+#link-overlay {
+    display: none;
+    background-color: rgba(0,0,0,0.75);
+    position: fixed;
+    width: 300px;
+    height: 3em;
+    line-height: 3em;
+    font-size: 2em;
+    text-align: center;
+    top: calc(50% - 1.5em);
+    left: calc(50% - 150px);
+    z-index: 101;
+    -moz-box-shadow: 0px 0px 100px 100px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 0px 0px 100px 100px rgba(0,0,0,0.75);
+    -o-box-shadow: 0px 0px 100px 100px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 100px 100px rgba(0,0,0,0.75);
+    filter:progid:DXImageTransform.Microsoft.Shadow(color=rgba(0,0,0,0.75), Direction=NaN, Strength=100);
+}
+@-webkit-keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+.fade-out {
+   display: block !important;
+  -webkit-animation-name: fadeOut;
+  animation-name: fadeOut;
+  animation-duration: 0.5s;
+  opacity: 0;
+}
+@-webkit-keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.fade-in {
+   display: block !important;
+  -webkit-animation-name: fadeIn;
+  animation-name: fadeIn;
+  animation-duration: 0.5s;
+  opacity: 1;
+}
+/* Opera Support */
+#detach-button.visible {
+  display: none !important;
+}
+
+/* Footers */
+footer {
+    font-size: 0.5em ! important;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 5px;
+    background-color: rgba(0,0,0,0.65);
+    z-index: 101;
+}
+footer a {
+    color: white;
+    text-decoration: none;
+}
+footer a:hover {
+    text-decoration: underline;
+}
+.credits {
+    float: left;
+    padding-right: 25px;
+    max-width: 74s%;
+}
+.author {
+    padding-left: 25px;
+    float: right;
+    margin-right: 10px;
+    max-width: 24%;
+}
+
+/* Header */
+header {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    background-color: rgba(0,0,0,0.65);
+    z-index: 101;
+}
+#title {
+    float: left;
+    max-width: 49%;
+    padding: 2px;
+    padding-right: 50px;
+    padding-left: 15px;
+}
+
+#buttons{
+    float: right;
+    max-width: 49%;
+    padding: 2px;
+    padding-left: 50px;
+    padding-left: 15px;
+}
+#buttons img {
+    width: 27px;
+    margin-left: 3px;
+    margin-right: 3px;
+}
+#buttons img:hover {
+  cursor: pointer;
+}
+.fb-share-button {
+  height: 20px !important;
+}
+.fb-share-button * {
+  position: relative !important;
+  top: -4px;
+}
