@@ -21,10 +21,10 @@ catch (Exception $e) {
 /**********************
  * Mute GET or COOKIE
  **********************/
-if((isset($_GET['mute'])&&((int) $_GET['mute']==1)) or (isset($_COOKIE['mute'])&&((int) $_COOKIE['mute']==1))) {
-	$volume = 0;
-} else {
-	$volume = 0.2;
+if(!isset($_COOKIE['mute']) || isset($_GET['mute'])) {
+	$mute = (isset($_GET['mute']))?(int)$_GET['mute']:0;
+
+	echo '<script type="text/javascript">setcookie("mute",'.$mute.',31);</script>';
 }
 
 /**********************
@@ -72,27 +72,15 @@ $_SERVER['REQUEST_URI'] = ($f==$data["link"])?$data["link"]:"random-".$data["lin
  * Code HTML
  **********************/
 ?>
-	<script type="text/javascript">
-		if(!existCookie("mute")) {
-			setCookie("mute", <?php echo (isset($_GET['mute'])&&((int) $_GET['mute']==1))?"1":"0"; ?>, 31);
-		}
-	</script>
 	<body>
 		<div id="fb-root"></div>
-		<script>(function(d, s, id) {
-		  var js, fjs = d.getElementsByTagName(s)[0];
-		  if (d.getElementById(id)) return;
-		  js = d.createElement(s); js.id = id;
-		  js.src = "//connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v2.8";
-		  fjs.parentNode.insertBefore(js, fjs);
-		  }(document, 'script', 'facebook-jssdk'));</script>
 
 		<header>
 			<!-- Title -->
 			<div id="title"><?php echo $data["nom"]; ?></div>
 			<div id="buttons">
 				<!-- Twitter -->
-				<a href="https://twitter.com/share" class="twitter-share-button" data-url="***REMOVED***/<?php echo $data["link"]; ?>" data-text="That meme is amazing !" data-hashtags="Randomeme">Tweet</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+				<a href="https://twitter.com/share" class="twitter-share-button" data-url="***REMOVED***/<?php echo $data["link"]; ?>" data-text="That meme is amazing !" data-hashtags="Randomeme">Tweet</a>
 
 				<!-- Facebook -->
 				<div class="fb-share-button" data-href="***REMOVED***/<?php echo $data["link"]; ?>" data-layout="button" data-size="small" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Frandomeme.xyz%2F<?php echo $data["link"]; ?>&amp;src=sdkpreparse">Share</a></div>
@@ -122,6 +110,10 @@ $_SERVER['REQUEST_URI'] = ($f==$data["link"])?$data["link"]:"random-".$data["lin
 
 		<!-- Content -->
 		<?php
+		echo '<script type="text/javascript">
+			var memeType = '.(int) $data["type"].';
+			</script>';
+		
 		switch($data["type"]) {
 			case 0: // Video
 			?>
@@ -133,39 +125,13 @@ $_SERVER['REQUEST_URI'] = ($f==$data["link"])?$data["link"]:"random-".$data["lin
 				-->
 				<div id="adContainer"></div>
 				<img id="play" src="img/play.png">
-
-				<script type="text/javascript">
-				// Play on load
-				window.addEventListener('load', function() {
-					var video = document.getElementById("video");
-					video.volume = <?php echo $volume; ?>;
-					video.play();
-
-					if(video.paused) {
-						document.getElementById("play").style.display = "block"; /* That's Just for android */
-					}
-				});
-
-				//Android Compatibility
-				window.addEventListener('touchstart', function() {
-					video.play();	
-					document.getElementById("play").style.display = "none";
-					this.removeEventListener('touchstart', videoStart);
-				})
-				</script>
 			<?php
 			break;
 			case 1: // Audio + Image
 			?>
 			<audio id="audio" src="sounds/<?php echo $data["link"]; ?>.mp3"></audio>
 			<script type="text/javascript">
-			// Play on load
-			window.addEventListener('load', function() {
-				var sound = document.getElementById("sound");
-				document.body.style.backgroundImage = "url('img/"+<?php echo data["link"]; ?>+".png')";
-				sound.volume = <?php echo $volume; ?>;
-				sound.play();
-			});
+			document.body.style.backgroundImage = "url('img/"+<?php echo data["link"]; ?>+".png')";
 			</script>
 			<?php
 			break;
