@@ -92,12 +92,7 @@ $_SERVER['REQUEST_URI'] = ($f==$data["link"])?$data["link"]:"random-".$data["lin
 				<img alt="link" src="img/link.png" id="link">
 
 				<!-- Mute button -->
-				<?php 
-				if($volume==0) {
-					echo'<img alt="mute" src="img/volume-off.png" id="volume" alt="volume">';
-				} else {
-					echo'<img alt="mute" src="img/volume-on.png" id="volume" alt="volume">';
-				} ?>
+				<img alt="mute" src="img/volume-on.png" id="volume" alt="volume">
 
 				<!-- Fullscreen button -->
 				<img src="img/fullscreen-expand.png" id="fullscreen" alt="fullscreen">
@@ -113,7 +108,7 @@ $_SERVER['REQUEST_URI'] = ($f==$data["link"])?$data["link"]:"random-".$data["lin
 		echo '<script type="text/javascript">
 			var memeType = '.(int) $data["type"].';
 			</script>';
-		
+
 		switch($data["type"]) {
 			case 0: // Video
 			?>
