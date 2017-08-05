@@ -1,4 +1,7 @@
-<?php $config = parse_ini_file('config.ini'); ?>
+<?php 
+$debut = round(microtime(true) * 1000);
+
+$config = parse_ini_file('config.ini'); ?>
 <!DOCTYPE html>
 <!-- 
 	Code by Elanis
