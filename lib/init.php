@@ -31,7 +31,10 @@ function LoadIt() {
 		}
 	}
 	/* SQL Launch */
-	$db = ($config['module_sql'])?new Database($config['sql_host'],$config['sql_database'],$config['sql_username'],$config['sql_password']):null;
+	$sqlDB = ($config['module_sql'])?new sqlInterface($config['sql_host'],$config['sql_database'],$config['sql_username'],$config['sql_password']):null;
+
+	/* Mongo Launch */
+	$mongoDB = ($config['module_mongodb'])?new mongoInterface($config['mongo_host']):null;
 
 	/* Translate */
 	$lang = ($config['module_lang'])?new Language():null;
@@ -61,14 +64,22 @@ function LoadIt() {
 	}
 
 	echo "<title>".$config['website_name']."</title>";
+
+	if(!isset($config['website_css']) || $config['website_css']=="") {
+		$config['website_css'] = "./lib/css/style.css";
+	}
+
+	if(!isset($config['website_favicon']) || $config['website_favicon']=="") {
+		$config['website_favicon'] = "./img/favicon.png";
+	}
 ?>
 <meta charset="UTF-8">
 <!-- On prepare le charset , les mots clés , le fichier css et l'icone du site -->
 <meta name="keywords" content="<?php echo META_KEYS; ?>">
 <meta name="description" content="<?php echo META_DESC; ?>" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="shortcut icon" type="image/png" href="./img/favicon.png"/>
-<link rel="stylesheet" media="screen" type="text/css" title="Design" href="./lib/css/style.css"/>
+<link rel="shortcut icon" type="image/png" href="<?php echo $config['website_favicon']; ?>"/>
+<link rel="stylesheet" media="screen" type="text/css" title="Design" href="<?php echo $config['website_css']; ?>"/>
 <?php
 echo $config['website_custom_head'];
 ?>
