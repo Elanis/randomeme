@@ -5,8 +5,14 @@
 function drawCookiePreventionPanel() {
 	/* Get Vars from Config */
 	global $config;
-	
-	if($config['cookies-prevention-activated']==true && (!isset($_COOKIE['cookies_accepted']) || $_COOKIE['cookies_accepted']!=1 )) {
+
+	if(isset($_GET['cookies_accepted']) && $_GET['cookies_accepted']==1) {
+		echo "<script type=\"text/javascript\">
+		setCookie(\"cookies_accepted\",1,".$config['cookies-prevention-valid-time'].");
+		</script>";
+	}
+
+	if($config['cookies-prevention-activated']==true && (!isset($_COOKIE['cookies_accepted']) || $_COOKIE['cookies_accepted']!=1 ) && (!isset($_GET['cookies_accepted']) || $_GET['cookies_accepted']!=1 )) {
 		// Is the language module active ? If not, do its work ...
 		if($config['module_lang']!="1" && $config['module_lang']!=1) {
 			define('COOKIE_STAT_PREVENT',$config['cookies-prevention-default-message']);
