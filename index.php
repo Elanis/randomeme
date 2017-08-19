@@ -24,7 +24,7 @@ catch (Exception $e) {
 if(!isset($_COOKIE['mute']) || isset($_GET['mute'])) {
 	$mute = (isset($_GET['mute']))?(int)$_GET['mute']:0;
 
-	echo '<script type="text/javascript">setcookie("mute",'.$mute.',31);</script>';
+	echo '<script type="text/javascript">setCookie("mute",'.$mute.',31);</script>';
 }
 
 /**********************
