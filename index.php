@@ -38,8 +38,38 @@ $f = substr($f, 0, 5); // On reduit à 5 caracteres
 /**********************
  * Disallow Subfolders
  **********************/
-if(('/'.$f!=$_SERVER['REQUEST_URI'])&&('/'.$f."?mute=1"!=$_SERVER['REQUEST_URI'])) {
+$arg1 = "";
+$arg2 = "";
+$arg3 = "";
+
+if(isset($_GET['mute'])) {
+	$arg1 = "mute=".((string) $_GET['mute']);
+}
+
+if(isset($_GET['cookies_accepted'])) {
+	$arg2 = "cookies_accepted=".((string) $_GET['cookies_accepted']);
+}
+
+if($arg1!="" && $arg2 !="") {
+	$arg3 = "&";
+}
+
+$comp1 = '/'.$f.'?'.$arg1.$arg3.$arg2;
+$comp2 = '/'.$f.'?'.$arg2.$arg3.$arg1;
+
+if(('/'.$f!=$_SERVER['REQUEST_URI'])&&
+	($comp1!=$_SERVER['REQUEST_URI'])&&
+	($comp2!=$_SERVER['REQUEST_URI'])) {
+
 	if(isset($_GET['mute'])&&((int) $_GET['mute']==1)) { $f = $f."?mute=1"; } // On remet l'argument GET
+	if(isset($_GET['cookies_accepted'])&&((int) $_GET['cookies_accepted']==1)) { 
+		if(isset($_GET['mute'])&&((int) $_GET['mute']==1)) {
+			$f = $f."&cookies_accepted=1";
+		} else {
+			$f = $f."?cookies_accepted=1";
+		}
+	 } // On remet l'argument GET
+ 
 	header("Location: ***REMOVED***/".$f);
 }
 
