@@ -189,5 +189,8 @@ $_SERVER['REQUEST_URI'] = ($f==$data["link"])?$data["link"]:"random-".$data["lin
 				?> 
 			</div>
 		</footer>
+		<script type="text/javascript" src="lib/js/jquery.min.js"></script>
+		<script type="text/javascript" src="lib/js/toolbar.js"></script>
+		<script type="text/javascript" src="lib/js/main.js"></script>
 	</body>
 </html>
