@@ -20,7 +20,8 @@ function LoadIt() {
 	global $config;
 	
 	/* Create global vars */
-	global $db;
+	global $sqlDB;
+	global $mongoDB;
 	global $lang;
 	global $user;
 
