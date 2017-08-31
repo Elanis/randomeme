@@ -130,7 +130,7 @@ $_SERVER['REQUEST_URI'] = ($f==$data["link"])?$data["link"]:"random-".$data["lin
 		</header>
 
 		<!-- Link -->
-		<textarea id="link-to-copy">***REMOVED***/<?php echo $data["link"]; ?></textarea>
+		<textarea id="link-to-copy" disabled readonly>***REMOVED***/<?php echo $data["link"]; ?></textarea>
 		<p id="link-overlay">Link Copied !</p>
 
 		<!-- Content -->
