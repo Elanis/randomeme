@@ -73,6 +73,10 @@ function LoadIt() {
 	if(!isset($config['website_favicon']) || $config['website_favicon']=="") {
 		$config['website_favicon'] = "./img/favicon.png";
 	}
+
+	if(isset($_config['website_theme_color']) && (strlen($_config['website_theme_color'])==7 || strlen($_config['website_theme_color'])==4)) {
+		echo '<meta name="theme-color" content="'.$_config['website_theme_color'].'">';
+	}
 ?>
 <meta charset="UTF-8">
 <!-- On prepare le charset , les mots clés , le fichier css et l'icone du site -->
