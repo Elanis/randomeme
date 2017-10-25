@@ -1,4 +1,0 @@
-# Rewrite Rules
-RewriteEngine On
-RewriteCond %{REQUEST_FILENAME} !(.*)\.(css|jpg|png|js|ttf|ico|pdf|mp3|mp4)$
-RewriteRule ^(.*)$ ../main.php [L]
