@@ -23,7 +23,7 @@ if(isset($_SESSION['memeViewed']) && is_int($_SESSION['memeViewed']) && $_SESSIO
 echo "COUNTER: ".$_SESSION['memeViewed']."
 ";
 
-if($adChance < mt_rand(0,1)) {
+if($adChance > mt_rand(0,1)) {
 /**********************
  * Code HTML
  **********************/
