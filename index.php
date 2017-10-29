@@ -41,6 +41,8 @@ if($adChance < mt_rand(0,1)) {
 </html>
 <?php
 } else {
+$_SESSION['memeViewed']++;
+
 /**********************
  * Database Connection
  **********************/
