@@ -2,12 +2,45 @@
 /* Launch framework ! */
 include('./lib/init.php');
 
-/**********************
+/**
  * Display Errors
- **********************/
+ */
 ini_set('display_errors','on');
 error_reporting(E_ALL);
 
+/**
+ * Ads
+ */
+if(isset($_SESSION['memeViewed']) && is_int($_SESSION['memeViewed']) && $_SESSION['memeViewed'] >= 2) {
+	$adChance = $_SESSION['memeViewed'] * 0.1;
+} else if(isset($_SESSION['memeViewed']) && is_int($_SESSION['memeViewed']) && $_SESSION['memeViewed'] > 2 && $_SESSION['memeViewed']==1) {
+	$adChance = 0;
+} else {
+	$adChance = 0;
+	$_SESSION['memeViewed'] = 1;
+}
+
+if($adChance < mt_rand(0,1)) {
+/**********************
+ * Code HTML
+ **********************/
+?>
+	<body>
+		<div class="centered-div">
+			<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+			<!-- Randomeme - ads -->
+			<ins class="adsbygoogle"
+			     style="display:inline-block;width:336px;height:280px"
+			     data-ad-client="***REMOVED***"
+			     data-ad-slot="***REMOVED***"></ins>
+			<script>
+			(adsbygoogle = window.adsbygoogle || []).push({});
+			</script>
+		</div>
+	</body>
+</html>
+<?php
+} else {
 /**********************
  * Database Connection
  **********************/
@@ -194,3 +227,6 @@ $_SERVER['REQUEST_URI'] = ($f==$data["link"])?$data["link"]:"random-".$data["lin
 		<script type="text/javascript" src="lib/js/main.js"></script>
 	</body>
 </html>
+<?php 
+}
+?>
