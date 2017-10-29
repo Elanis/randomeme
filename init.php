@@ -32,7 +32,7 @@ function LoadIt() {
 		}
 	}
 	/* SQL Launch */
-	$sqlDB = ($config['module_sql'])?new sqlInterface($config['sql_host'],$config['sql_database'],$config['sql_username'],$config['sql_password']):null;
+	$sqlDB = ($config['module_sql'])?new sqlInterface($config['sql_host'],$config['sql_database'],$config['sql_username'],$config['sql_password'],$config['sql_port']):null;
 
 	/* Mongo Launch */
 	$mongoDB = ($config['module_mongodb'])?new mongoInterface($config['mongo_host']):null;
@@ -40,7 +40,7 @@ function LoadIt() {
 	/* Translate */
 	$lang = ($config['module_lang'])?new Language():null;
 
-	/* For no bugs */
+	/* If not translation, we force some constants */
 	if(!$config['module_lang']) {
 		define('META_KEYS',$config['website_keywords']);
 		define('META_DESC',$config['website_desc']);

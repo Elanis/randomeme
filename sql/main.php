@@ -15,7 +15,7 @@ class sqlInterface {
 	 * @param      string  $id        The username
 	 * @param      string  $password  The password
 	 */
-	private function connect($host,$db,$id,$password) {
+	private function connect($host,$db,$id,$password,$port=3306) {
 		if($host=="") { $host="localhost"; }
 
 		if($id==""||!isset($id)||$db==""||!isset($db)||$password==""||!isset($password)) { //Wrong Use !
@@ -24,7 +24,7 @@ class sqlInterface {
 		}
 
 		try {
-			$this->bd = new PDO('mysql:host='.$host.';dbname='.$db,$id,$password);
+			$this->bd = new PDO('mysql:host='.$host.';port='.$port.';dbname='.$db,$id,$password);
 		}
 		catch (Exception $e) {
 		        die('Erreur : ' . $e->getMessage());
@@ -32,7 +32,7 @@ class sqlInterface {
 	}
 
 	/**
-	 * construct
+	 * constructor
 	 *
 	 * @param      string  $host      The host
 	 * @param      string  $db        The database
@@ -291,6 +291,43 @@ class sqlInterface {
 	 */
 	public function count($table) {
 		return $this->bd->query("SELECT COUNT(*) FROM ".$table)->fetchColumn();
+	}
+
+	public function selectQuery($query,$bindValue,$oneResult=false) {
+
+		if(is_string($query)&&is_array($bindValue)&&is_bool($oneResult)) {
+
+			$query = $this->bd->prepare($query);
+
+			foreach($bindValue as $name => $value) {
+				if(is_int($value) && is_bool($value)) {
+					$pdoType = PDO::PARAM_INT;
+				} else {
+					$pdoType = PDO::PARAM_STR;
+				}
+
+				$query->bindValue(':'.$name,$value,$pdoType);
+			}
+
+			if($oneResult) {
+				$data = $query->fetch();
+				$query->CloseCursor();
+				return $data;
+			} else {
+				$query->execute();
+				$data = array();
+				$i = 0;
+				while($data1 = $query->fetch()) {
+					$data[$i] = $data1;
+					$i++;
+				}
+				$query->CloseCursor();
+
+				return $data;	
+			}
+		} else {
+			return false;
+		}
 	}
 }
 ?>
