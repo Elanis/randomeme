@@ -194,6 +194,6 @@ header {
 }
 
 .adsbygoogle {
-  margin-top: calc(100% - 140px);
-  margin-left: calc(100% - 168px);
+	margin-top: calc(50vh - 140px);
+	margin-left: calc(50vw - 168px);
 }

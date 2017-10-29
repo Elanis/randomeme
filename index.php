@@ -12,7 +12,7 @@ error_reporting(E_ALL);
  * Ads
  */
 if(isset($_SESSION['memeViewed']) && is_int($_SESSION['memeViewed']) && $_SESSION['memeViewed'] >= 2) {
-	$adChance = $_SESSION['memeViewed'] * 0.1;
+	$adChance = $_SESSION['memeViewed'] * 0.07;
 } else if(isset($_SESSION['memeViewed']) && is_int($_SESSION['memeViewed']) && $_SESSION['memeViewed'] > 2 && $_SESSION['memeViewed']==1) {
 	$adChance = 0;
 } else {
