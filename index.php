@@ -37,7 +37,7 @@ if($adChance > mt_rand(0,1)) {
 			(adsbygoogle = window.adsbygoogle || []).push({});
 			</script>
 
-			<a href="/" onclick="window.location.reload(); return;">Get a new meme !</a>
+			<a href="/" id="reload-page" onclick="window.location.reload(); return;">Get a new meme !</a>
 		</div>
 	</body>
 </html>

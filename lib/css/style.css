@@ -198,3 +198,21 @@ header {
 	margin-top: calc(50vh - 140px);
 	margin-left: calc(50vw - 168px);
 }
+
+#reload-page {
+	display: inline-block;
+
+	margin-top: calc(50vh + 140px + 2em); /* 50% + 1/2 ad + imaginary margin */
+	margin-left: calc(50vw - 168px);
+
+	text-align: center;
+
+	width: 336px;
+	padding: 0.25em;
+
+	background-color: white;
+	color: black;
+	border-radius: 0.15em;
+	border: 1px solid grey;
+	
+}
