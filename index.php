@@ -20,9 +20,6 @@ if(isset($_SESSION['memeViewed']) && is_int($_SESSION['memeViewed']) && $_SESSIO
 	$_SESSION['memeViewed'] = 1;
 }
 
-echo "COUNTER: ".$_SESSION['memeViewed']."
-";
-
 if($adChance > mt_rand(0,1)) {
 /**********************
  * Code HTML
@@ -39,6 +36,8 @@ if($adChance > mt_rand(0,1)) {
 			<script>
 			(adsbygoogle = window.adsbygoogle || []).push({});
 			</script>
+
+			<a href="/" onclick="window.location.reload(); return;">Get a new meme !</a>
 		</div>
 	</body>
 </html>
