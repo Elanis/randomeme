@@ -8,43 +8,6 @@ include('./lib/init.php');
 ini_set('display_errors','on');
 error_reporting(E_ALL);
 
-/**
- * Ads
- */
-if(isset($_SESSION['memeViewed']) && is_int($_SESSION['memeViewed']) && $_SESSION['memeViewed'] > 2) {
-	$adChance = $_SESSION['memeViewed'] * 0.07;
-} else if(isset($_SESSION['memeViewed']) && is_int($_SESSION['memeViewed']) && ($_SESSION['memeViewed']==1 || $_SESSION['memeViewed']==2)) {
-	$adChance = 0;
-} else {
-	$adChance = 0;
-	$_SESSION['memeViewed'] = 1;
-}
-
-if($adChance > mt_rand(0,1)) {
-/**********************
- * Code HTML
- **********************/
-?>
-	<body>
-		<div class="centered-div">
-			<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-			<!-- Randomeme - ads -->
-			<ins class="adsbygoogle"
-			     style="display:inline-block;width:336px;height:280px"
-			     data-ad-client="***REMOVED***"
-			     data-ad-slot="***REMOVED***"></ins>
-			<script>
-			(adsbygoogle = window.adsbygoogle || []).push({});
-			</script>
-
-			<a href="/" id="reload-page" onclick="window.location.reload(); return;">Get a new meme !</a>
-		</div>
-	</body>
-</html>
-<?php
-$_SESSION['memeViewed'] = 0;
-} else {
-$_SESSION['memeViewed']++;
 
 /**********************
  * Database Connection
@@ -119,6 +82,59 @@ $query->bindValue(':link',$f,PDO::PARAM_STR);
 $query->execute();
 $data = $query->fetch();
 $query->CloseCursor();
+
+if($data !== false && !(empty($data)||!isset($data["link"])||empty($data["link"])||$data["link"]==""||(isset($_SESSION['historique'])&&$data["link"]==$_SESSION['historique'] && $f != $data["link"]))) {
+
+/**
+ * Twitter cards
+ */
+?>
+	<meta name="twitter:card" content="player" />
+	<meta name="twitter:creator" content="@ElanisGaming" />
+	<meta name="twitter:title" content="<?php echo $data["nom"]; ?>" />
+	<meta name="twitter:image" content="***REMOVED***/img/background.png" />
+	<meta name="twitter:player" content="***REMOVED***/player/?v=<?php echo $data["link"]; ?>" />
+	<meta name="twitter:player:stream" content="https://***REMOVED***/randomeme/<?php echo $data["link"]; ?>.mp4" />
+	<meta name="twitter:player:stream:content_type" content="video/mp4" />
+<?php
+}
+/**
+ * Ads
+ */
+if(isset($_SESSION['memeViewed']) && is_int($_SESSION['memeViewed']) && $_SESSION['memeViewed'] > 2) {
+	$adChance = $_SESSION['memeViewed'] * 0.07;
+} else if(isset($_SESSION['memeViewed']) && is_int($_SESSION['memeViewed']) && ($_SESSION['memeViewed']==1 || $_SESSION['memeViewed']==2)) {
+	$adChance = 0;
+} else {
+	$adChance = 0;
+	$_SESSION['memeViewed'] = 1;
+}
+
+if($adChance > mt_rand(0,1)) {
+/**********************
+ * Code HTML
+ **********************/
+?>
+	<body>
+		<div class="centered-div">
+			<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+			<!-- Randomeme - ads -->
+			<ins class="adsbygoogle"
+			     style="display:inline-block;width:336px;height:280px"
+			     data-ad-client="***REMOVED***"
+			     data-ad-slot="***REMOVED***"></ins>
+			<script>
+			(adsbygoogle = window.adsbygoogle || []).push({});
+			</script>
+
+			<a href="/" id="reload-page" onclick="window.location.reload(); return;">Get a new meme !</a>
+		</div>
+	</body>
+</html>
+<?php
+$_SESSION['memeViewed'] = 0;
+} else {
+$_SESSION['memeViewed']++;
 
 /**********************
  * ... ou Random meme
