@@ -15,7 +15,7 @@ class mongoInterface {
 
 		if(!extension_loaded("mongodb")) {
 			echo "ERROR: MONGO EXTENSION NOT LOADED !";
-			exit();
+			die();
 		} else {
 			try {
 				$this->manager = new MongoDB\Driver\Manager($dburl );
@@ -25,6 +25,15 @@ class mongoInterface {
 			}
 		}
 	}
+
+	/**
+	 * constructor
+	 *
+	 * @param      string  $dbURL  The database url
+	 */
+	public function __construct($dbURL) {
+		$this->connect($dbURL); //Il faut se connecter à la BDD
+    }
 
 	public function getCondContent($db,$doc,$filter) {
 		if(is_string($db) && is_string($doc) && is_array($filter)) {

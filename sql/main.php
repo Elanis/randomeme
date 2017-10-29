@@ -44,8 +44,7 @@ class sqlInterface {
     }
 
 	/**
-	 * getContent
-	 * Gets the content.
+	 * Gets the content of a table
 	 *
 	 * @param      table           $table  The table name
 	 * @param      integer		   $min    The minimum index
@@ -74,7 +73,7 @@ class sqlInterface {
 	}
 
 	/**
-	 * Gets content depends on specified conditions.
+	 * Gets content of a table depends on specified conditions.
 	 *
 	 * @param      array           $table  The table name
 	 * @param      array           $where  The condition
