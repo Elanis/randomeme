@@ -11,7 +11,7 @@ video {
 </style>
 
 <video width="100%" controls>
-  	<source src="https://***REMOVED***/randomeme/<?php echo $data["link"]; ?>.mp4" type="video/mp4">
+  	<source src="https://***REMOVED***/randomeme/<?php echo $_GET['v']; ?>.mp4" type="video/mp4">
 	Your browser does not support video
 </video>
 
