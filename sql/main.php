@@ -27,7 +27,7 @@ class sqlInterface {
 			$this->bd = new PDO('mysql:host='.$host.';port='.$port.';dbname='.$db,$id,$password);
 		}
 		catch (Exception $e) {
-		        die('Erreur : ' . $e->getMessage());
+			die('Erreur : ' . $e->getMessage());
 		}
 	}
 
