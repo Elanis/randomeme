@@ -1,7 +1,7 @@
 body
 {
 	background-color: black;
-	background-image: url('../../img/background.png')
+	background-image: url('../../img/background.png');
 	background-attachment: fixed;
 	background-position: center;
 	background-repeat: no-repeat;
@@ -202,7 +202,6 @@ header {
 #reload-page {
 	display: inline-block;
 
-	margin-top: calc(50vh + 140px + 2em); /* 50% + 1/2 ad + imaginary margin */
 	margin-left: calc(50vw - 168px);
 
 	text-align: center;
@@ -210,9 +209,14 @@ header {
 	width: 336px;
 	padding: 0.25em;
 
-	background-color: white;
+	background-color: #CCCCCC;
 	color: black;
 	border-radius: 0.15em;
 	border: 1px solid grey;
-	
+
+	text-decoration: none;
+}
+#reload-page:hover {
+	font-weight: bold;
+	background-color: #555555;
 }
