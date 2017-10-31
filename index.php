@@ -94,6 +94,8 @@ if($data !== false && !(empty($data)||!isset($data["link"])||empty($data["link"]
 	<meta name="twitter:title" content="<?php echo $data["nom"]; ?>" />
 	<meta name="twitter:image" content="***REMOVED***/img/background.png" />
 	<meta name="twitter:player" content="***REMOVED***/twitter-player/?v=<?php echo $data["link"]; ?>" />
+	<meta name="twitter:player:width" content="1920" />
+	<meta name="twitter:player:height" content="1080" />
 	<meta name="twitter:player:stream" content="https://***REMOVED***/randomeme/<?php echo $data["link"]; ?>.mp4" />
 	<meta name="twitter:player:stream:content_type" content="video/mp4" />
 <?php
