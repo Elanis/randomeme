@@ -10,7 +10,7 @@ video {
 }
 </style>
 
-<video width="100%" controls>
+<video width="100%" autoplay>
   	<source src="https://***REMOVED***/randomeme/<?php echo $_GET['v']; ?>.mp4" type="video/mp4">
 	Your browser does not support video
 </video>
