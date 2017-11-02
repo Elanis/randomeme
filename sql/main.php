@@ -292,6 +292,15 @@ class sqlInterface {
 		return $this->bd->query("SELECT COUNT(*) FROM ".$table)->fetchColumn();
 	}
 
+	/**
+	 * Query to select with complexe SQL setences
+	 *
+	 * @param      <type>         $query      The query the sql server will read
+	 * @param      <type>         $bindValue  The binded value
+	 * @param      boolean        $oneResult  Does we echo only one result ?
+	 *
+	 * @return     array|boolean  ( description_of_the_return_value )
+	 */
 	public function selectQuery($query,$bindValue,$oneResult=false) {
 
 		if(is_string($query)&&is_array($bindValue)&&is_bool($oneResult)) {
@@ -326,6 +335,32 @@ class sqlInterface {
 			}
 		} else {
 			return false;
+		}
+	}
+
+	/**
+	 * Update database content via a custom query
+	 *
+	 * @param      <type>  $query      The custom query
+	 * @param      <type>  $bindValue  The binded value
+	 */
+	public function updateQuery($query,$bindValue) {
+		if(is_string($query)&&is_array($bindValue)) {
+
+			$query = $this->bd->prepare($query);
+
+			foreach($bindValue as $name => $value) {
+				if(is_int($value) && is_bool($value)) {
+					$pdoType = PDO::PARAM_INT;
+				} else {
+					$pdoType = PDO::PARAM_STR;
+				}
+
+				$query->bindValue(':'.$name,$value,$pdoType);
+			}
+
+			$query->execute();
+			$query->CloseCursor();
 		}
 	}
 }
