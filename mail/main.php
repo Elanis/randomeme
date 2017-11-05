@@ -20,13 +20,16 @@ abstract class Mail {
 			"vmani.com",
 			"wimsg.com",
 			// getairmail.com
+			"getairmail.com",
 			"eelmail.com",
 			"boximail.com",
 			"vomoto.com",
 			"tafmail.com",
 			"clrmail.com",
+			"imgof.com",
 			// mohmal.com
 			"mailna.biz",
+			"emailo.pro",
 			// 10minutemail.com
 			"mvrht.net",
 			// jetable.org
