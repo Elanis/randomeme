@@ -26,11 +26,11 @@ function File_Find($folderlist, $ext) {
 			{
 				$filelist[$i] = array();
 
-				for($j=0;$j<((count($scan))+1);$j++)
+				for($j=0;$j<(count($scan));$j++)
 				{
 					$words = explode(".",$scan[$j]);
 
-					if(empty($words[1])) //Then it's a folder ( no extension )
+					if(empty($words[count($words)-1])) //Then it's a folder ( no extension )
 					{
 						if($scan[$j]==".."||$scan[$j]=="."||$scan[$j]=="") {
 						//Don't add it !!
@@ -39,7 +39,7 @@ function File_Find($folderlist, $ext) {
 							array_push($folderlist,$folderlist[$i].'/'.$scan[$j]); // Add new folders to list
 						}
 					}
-					elseif(array_search($words[count($words)-1],$ext)) { // Then it's an searched file.
+					elseif(array_search($words[count($words)-1],$ext)!==false) { // Then it's an searched file.
 						array_push($filelist[$i],$scan[$j]);
 					}
 				}
