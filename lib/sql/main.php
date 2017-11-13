@@ -1,19 +1,4 @@
 <?php 
-<<<<<<< HEAD
-/* =============================================
-			       PHP SQL LIB
-					BY ELANIS
-=============================================== */
-
-class Database {
-	private $bd;
-
-	/* Connect
-	INPUT: host (string), db (string), id (string), password (string)
-	OUTPUT: -
-	*/
-	private function connect($host,$db,$id,$password) {
-=======
 /************************************************
 			       PHP SQL LIB
 					BY ELANIS
@@ -31,7 +16,6 @@ class sqlInterface {
 	 * @param      string  $password  The password
 	 */
 	private function connect($host,$db,$id,$password,$port=3306) {
->>>>>>> 7f7a52037a5c50ca4971a906e4abf64218d95294
 		if($host=="") { $host="localhost"; }
 
 		if($id==""||!isset($id)||$db==""||!isset($db)||$password==""||!isset($password)) { //Wrong Use !
@@ -40,19 +24,6 @@ class sqlInterface {
 		}
 
 		try {
-<<<<<<< HEAD
-			$this->bd = new PDO('mysql:host='.$host.';dbname='.$db,$id,$password);
-		}
-		catch (Exception $e) {
-		        die('Erreur : ' . $e->getMessage());
-		}
-	}
-
-	/* construct
-	INPUT: host (string), db (string), id (string), password (string)
-	OUTPUT: -
-	*/
-=======
 			$this->bd = new PDO('mysql:host='.$host.';port='.$port.';dbname='.$db,$id,$password);
 		}
 		catch (Exception $e) {
@@ -68,17 +39,10 @@ class sqlInterface {
 	 * @param      string  $id        The username
 	 * @param      string  $password  The password
 	 */
->>>>>>> 7f7a52037a5c50ca4971a906e4abf64218d95294
 	public function __construct($host,$db,$id,$password) {
 		$this->connect($host,$db,$id,$password); //Il faut se connecter à la BDD
     }
 
-<<<<<<< HEAD
-	/* getContent
-	INPUT: table (string), min (int), size (int), order (string)
-	OUTPUT: -
-	*/
-=======
 	/**
 	 * Gets the content of a table
 	 *
@@ -89,7 +53,6 @@ class sqlInterface {
 	 *
 	 * @return     array           The content.
 	 */
->>>>>>> 7f7a52037a5c50ca4971a906e4abf64218d95294
 	public function getContent($table,$min=0,$size=1000000,$order="") {
 		if(is_string($table)) {
 			$query = $this->bd->prepare('SELECT * FROM '.$table.' ORDER BY '.$order.' LIMIT '.$min.', '.$size);
@@ -105,16 +68,6 @@ class sqlInterface {
 			return $data;
 		}
 		else {
-<<<<<<< HEAD
-			return;
-		}
-	}
-
-	/* getCondContent
-	INPUT: table (string), where (table)
-	OUTPUT: -
-	*/
-=======
 			return [];
 		}
 	}
@@ -130,7 +83,6 @@ class sqlInterface {
 	 *
 	 * @return     array           The condition content.
 	 */
->>>>>>> 7f7a52037a5c50ca4971a906e4abf64218d95294
 	public function getCondContent($table,$where,$min=0,$size=1000000,$order="id") {
 		if(is_string($table)&&is_array($where)) {
 			$where_cond = "";
@@ -166,16 +118,6 @@ class sqlInterface {
 			return $data;
 		}
 		else {
-<<<<<<< HEAD
-			return;
-		}
-	}
-
-	/* addContent
-	INPUT: table (string), data (table)
-	OUTPUT: -
-	*/
-=======
 			return [];
 		}
 	}
@@ -186,7 +128,6 @@ class sqlInterface {
 	 * @param      string  $table  The table
 	 * @param      array   $data   The data
 	 */
->>>>>>> 7f7a52037a5c50ca4971a906e4abf64218d95294
 	public function addContent($table,$data) {
 
 			$content = "(";
@@ -227,8 +168,6 @@ class sqlInterface {
 	INPUT: table (string), data (table), where (table)
 	OUTPUT: -
 	*/
-<<<<<<< HEAD
-=======
 
 	/**
 	 * Update database content
@@ -237,7 +176,6 @@ class sqlInterface {
 	 * @param      array   $data   The data
 	 * @param      array   $where  The where
 	 */
->>>>>>> 7f7a52037a5c50ca4971a906e4abf64218d95294
 	public function updateContent($table,$data,$where) {
 		if(is_string($table)&&is_array($data)&&is_array($where)) {
 
@@ -282,15 +220,12 @@ class sqlInterface {
 		}
 	}
 
-<<<<<<< HEAD
-=======
 	/**
 	 * Removes database content
 	 *
 	 * @param      string  $table  The table
 	 * @param      array   $where  The where
 	 */
->>>>>>> 7f7a52037a5c50ca4971a906e4abf64218d95294
 	public function removeContent($table,$where) {
 		if(is_string($table)&&is_array($where)) {
 
@@ -318,12 +253,6 @@ class sqlInterface {
 		}
 	}
 
-<<<<<<< HEAD
-	/* drawTableByContent
-	INPUT: table (string), min (int), size (int), order (string)
-	OUTPUT: -
-	*/
-=======
 	/**
 	 * Draws a table by content.
 	 *
@@ -334,7 +263,6 @@ class sqlInterface {
 	 * @param      integer  $size    The size
 	 * @param      string   $order   The order
 	 */
->>>>>>> 7f7a52037a5c50ca4971a906e4abf64218d95294
 	public function drawTableByContent($header,$rows,$table,$min=0,$size=1000000,$order="") {
 		echo "<table><tr>";
 		for($i=0; $i<count($header); $i++) {
@@ -353,16 +281,6 @@ class sqlInterface {
 		}
 	}
 
-<<<<<<< HEAD
-	/* count
-	Compte le nombre de lignes d'une table
-	Parametre : table ( string )
-	Retourne : ( int )
-	*/
-	public function count($table) {
-		return $this->bd->query("SELECT COUNT(*) FROM ".$table)->fetchColumn();
-	}
-=======
 	/**
 	 * Compte le nombre de lignes d'une table
 	 *
@@ -445,6 +363,5 @@ class sqlInterface {
 			$query->CloseCursor();
 		}
 	}
->>>>>>> 7f7a52037a5c50ca4971a906e4abf64218d95294
 }
 ?>
