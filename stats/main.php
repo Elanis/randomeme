@@ -35,7 +35,7 @@ function full_url( $s, $use_forwarded_host = false )
     return url_origin( $s, $use_forwarded_host ) . $s['REQUEST_URI'];
 }
 
-if(!isset($_SESSION['visited']) || (isset($_SESSION['visited']) && $_SESSION['visited']!=$_SERVER['REQUEST_URI'])) {
+if(!isset($_SESSION['visited']) || $_SESSION['visited']!=$_SERVER['REQUEST_URI']) {
     $manager = new MongoDB\Driver\Manager("***REMOVED***");
 
     $visit = [];
@@ -47,8 +47,10 @@ if(!isset($_SESSION['visited']) || (isset($_SESSION['visited']) && $_SESSION['vi
     } elseif(substr($_SERVER['HTTP_USER_AGENT'],0,31)=="Mozilla/5.0 (compatible; Yandex") {
         $visit["ip"] = "Yandex Bot";
     } else {
-        $visit["ip"] = get_client_ip();
+        $visit['user-agent'] = $_SERVER['HTTP_USER_AGENT'];
     }
+    
+    $visit["ip"] = get_client_ip();
     $visit["url"] = full_url($_SERVER);
     $visit["origin"] = (isset($_SERVER['HTTP_REFERER']))?$_SERVER['HTTP_REFERER']:null;
     $visit["time"] = time();
