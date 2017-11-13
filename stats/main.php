@@ -41,11 +41,11 @@ if(!isset($_SESSION['visited']) || $_SESSION['visited']!=$_SERVER['REQUEST_URI']
     $visit = [];
     if(strstr(strtolower($_SERVER['HTTP_USER_AGENT']), "googlebot"))
     {
-        $visit["ip"] = "Google Bot";
+        $visit["user-agent"] = "Google Bot";
     } elseif(strstr(strtolower($_SERVER['HTTP_USER_AGENT']), "baidu")) {
-        $visit["ip"] = "Baidu Bot";
+        $visit["user-agent"] = "Baidu Bot";
     } elseif(substr($_SERVER['HTTP_USER_AGENT'],0,31)=="Mozilla/5.0 (compatible; Yandex") {
-        $visit["ip"] = "Yandex Bot";
+        $visit["user-agent"] = "Yandex Bot";
     } else {
         $visit['user-agent'] = $_SERVER['HTTP_USER_AGENT'];
     }
