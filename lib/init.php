@@ -1,4 +1,11 @@
+<<<<<<< HEAD
 <?php $config = parse_ini_file('config.ini'); ?>
+=======
+<?php 
+$debut = round(microtime(true) * 1000);
+
+$config = parse_ini_file('config.ini'); ?>
+>>>>>>> 7f7a52037a5c50ca4971a906e4abf64218d95294
 <!DOCTYPE html>
 <!-- 
 	Code by Elanis
@@ -17,7 +24,12 @@ function LoadIt() {
 	global $config;
 	
 	/* Create global vars */
+<<<<<<< HEAD
 	global $db;
+=======
+	global $sqlDB;
+	global $mongoDB;
+>>>>>>> 7f7a52037a5c50ca4971a906e4abf64218d95294
 	global $lang;
 	global $user;
 
@@ -28,12 +40,23 @@ function LoadIt() {
 		}
 	}
 	/* SQL Launch */
+<<<<<<< HEAD
 	$db = ($config['module_sql'])?new Database($config['sql_host'],$config['sql_database'],$config['sql_username'],$config['sql_password']):null;
+=======
+	$sqlDB = ($config['module_sql'])?new sqlInterface($config['sql_host'],$config['sql_database'],$config['sql_username'],$config['sql_password'],$config['sql_port']):null;
+
+	/* Mongo Launch */
+	$mongoDB = ($config['module_mongodb'])?new mongoInterface($config['mongo_host']):null;
+>>>>>>> 7f7a52037a5c50ca4971a906e4abf64218d95294
 
 	/* Translate */
 	$lang = ($config['module_lang'])?new Language():null;
 
+<<<<<<< HEAD
 	/* For no bugs */
+=======
+	/* If not translation, we force some constants */
+>>>>>>> 7f7a52037a5c50ca4971a906e4abf64218d95294
 	if(!$config['module_lang']) {
 		define('META_KEYS',$config['website_keywords']);
 		define('META_DESC',$config['website_desc']);
@@ -53,20 +76,51 @@ function LoadIt() {
 	}
 
 	echo "<title>".$config['website_name']."</title>";
+<<<<<<< HEAD
+=======
+
+	if(!isset($config['website_css']) || $config['website_css']=="") {
+		$config['website_css'] = "./lib/css/style.css";
+	}
+
+	if(!isset($config['website_favicon']) || $config['website_favicon']=="") {
+		$config['website_favicon'] = "./img/favicon.png";
+	}
+
+	if(isset($config['website_theme_color']) && (strlen($config['website_theme_color'])==7 || strlen($config['website_theme_color'])==4)) {
+		echo '<meta name="theme-color" content="'.$config['website_theme_color'].'">';
+	}
+>>>>>>> 7f7a52037a5c50ca4971a906e4abf64218d95294
 ?>
 <meta charset="UTF-8">
 <!-- On prepare le charset , les mots clés , le fichier css et l'icone du site -->
 <meta name="keywords" content="<?php echo META_KEYS; ?>">
 <meta name="description" content="<?php echo META_DESC; ?>" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<<<<<<< HEAD
 <link rel="shortcut icon" type="image/png" href="./img/favicon.png"/>
 <link rel="stylesheet" media="screen" type="text/css" title="Design" href="./lib/css/style.css"/>
 <?php
+=======
+
+<link rel="shortcut icon" type="image/png" href="<?php echo $config['website_favicon']; ?>"/>
+<?php if(!$config['website_css_disabled']) { ?>
+<link rel="stylesheet" media="screen" type="text/css" title="Design" href="<?php echo $config['website_css']; ?>"/>
+<?php
+}
+>>>>>>> 7f7a52037a5c50ca4971a906e4abf64218d95294
 echo $config['website_custom_head'];
 ?>
 </head>
 <body>
 <?php
+<<<<<<< HEAD
+=======
+	/* Cookies prevention panel */
+	if($config['module_cookies']) {
+		drawCookiePreventionPanel();
+	}
+>>>>>>> 7f7a52037a5c50ca4971a906e4abf64218d95294
 }
 
 LoadIt();

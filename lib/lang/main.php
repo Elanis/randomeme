@@ -39,6 +39,7 @@ class Language {
 	OUTPUT: -
 	*/
 	private function setLanguage() {
+<<<<<<< HEAD
 		if(isset($_POST['selected-language'])) {
 			$lang = $_POST['selected-language'];
 		} elseif(isset($_POST['langue'])) {
@@ -47,6 +48,33 @@ class Language {
 			$lang = $_SESSION['lang'];	
 		}
 		$find = array_search($lang, $this->languageList);
+=======
+		$lang = "";
+		// Get
+		if(isset($_GET["lang"])) {
+			$lang = $_GET["lang"];
+		}
+		$find = array_search($lang, $this->languageList);
+		if(!$find) {
+			if(isset($this->languageList[$lang])) {
+				$lang = $this->languageList[$lang];
+			}
+			$find = array_search($lang, $this->languageList);
+		}
+		// POST / SESSION
+		if(!$find) {
+			if(isset($_POST['selected-language'])) {
+				$lang = $_POST['selected-language'];
+			} elseif(isset($_POST['langue'])) {
+				$lang = $_POST['langue'];
+			} elseif(isset($_SESSION['lang'])) {
+				$lang = $_SESSION['lang'];	
+			} else {
+				$lang = "";
+			}
+			$find = array_search($lang, $this->languageList);
+		}
+>>>>>>> 7f7a52037a5c50ca4971a906e4abf64218d95294
 
 		if(!$find) { $this->language = $this->defaultLanguage; }
 		else { $this->language = (string) $find; }
@@ -73,7 +101,11 @@ class Language {
 	OUTPUT: -
 	*/
 	public function drawLanguageList() {
+<<<<<<< HEAD
 		echo '<form action="'.$currentname.'" method="post">
+=======
+		echo '<form action="'.$_SERVER['REQUEST_URI'].'" method="post">
+>>>>>>> 7f7a52037a5c50ca4971a906e4abf64218d95294
 		<select id="langue" name="langue" size="1" onchange="this.form.submit()">';
 		foreach ($this->languageList as $lang_key => $lang_value) {
 			echo '<option value="'.$lang_value.'"';

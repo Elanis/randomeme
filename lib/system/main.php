@@ -141,7 +141,11 @@ OUTPUT: Informations ( table ) */
 function MemoryStats()
 {
 	$memory = array();
+<<<<<<< HEAD
 	if (!($memory['total'] = shell_exec('grep MemTotal /proc/meminfo | awk \'{print $2}\'')))
+=======
+	if (!($memory['total'] = (int)shell_exec('grep MemTotal /proc/meminfo | awk \'{print $2}\'')))
+>>>>>>> 7f7a52037a5c50ca4971a906e4abf64218d95294
 	{
 		$memory['total'] = 0;
 	}
@@ -173,14 +177,22 @@ OUTPUT: Informations ( table ) */
 function SwapStats()
 {
 	$swap = array();
+<<<<<<< HEAD
 	if (!($swap['total'] = shell_exec('grep SwapTotal /proc/meminfo | awk \'{print $2}\'')))
+=======
+	if (!($swap['total'] = (int) shell_exec('grep SwapTotal /proc/meminfo | awk \'{print $2}\'')))
+>>>>>>> 7f7a52037a5c50ca4971a906e4abf64218d95294
 	{
 		$swap['total'] = 0;
 	}
 	
 	$swap['free'] = 0;
 
+<<<<<<< HEAD
 	if (!($swap['free'] = shell_exec('grep SwapFree /proc/meminfo | awk \'{print $2}\'')))
+=======
+	if (!($swap['free'] = (int) shell_exec('grep SwapFree /proc/meminfo | awk \'{print $2}\'')))
+>>>>>>> 7f7a52037a5c50ca4971a906e4abf64218d95294
 	{
 	    $swap['free'] = 0;
 	}

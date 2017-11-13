@@ -56,7 +56,11 @@ class ReCaptcha
      *
      * @param string $secret shared secret between site and ReCAPTCHA server.
      */
+<<<<<<< HEAD
     function ReCaptcha($secret)
+=======
+    function _construct($secret)
+>>>>>>> 7f7a52037a5c50ca4971a906e4abf64218d95294
     {
         if ($secret == null || $secret == "") {
             die("To use reCAPTCHA you must get an API key from <a href='"
@@ -124,11 +128,19 @@ class ReCaptcha
         );
         $answers = json_decode($getResponse, true);
         $recaptchaResponse = new ReCaptchaResponse();
+<<<<<<< HEAD
         if (trim($answers ['success']) == true) {
             $recaptchaResponse->success = true;
         } else {
             $recaptchaResponse->success = false;
             $recaptchaResponse->errorCodes = $answers [error-codes];
+=======
+        if (trim($answers['success']) == true) {
+            $recaptchaResponse->success = true;
+        } else {
+            $recaptchaResponse->success = false;
+            $recaptchaResponse->errorCodes = $answers ['error-codes'];
+>>>>>>> 7f7a52037a5c50ca4971a906e4abf64218d95294
         }
         return $recaptchaResponse;
     }
