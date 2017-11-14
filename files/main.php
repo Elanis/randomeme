@@ -30,7 +30,7 @@ function File_Find($folderlist, $ext) {
 				{
 					$words = explode(".",$scan[$j]);
 
-					if(empty($words[count($words)-1])) //Then it's a folder ( no extension )
+					if(empty($words[1])) //Then it's a folder ( no extension )
 					{
 						if($scan[$j]==".."||$scan[$j]=="."||$scan[$j]=="") {
 						//Don't add it !!
