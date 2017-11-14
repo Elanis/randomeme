@@ -13,7 +13,7 @@ class Language {
 		//'ru' => 'русский'
 	];
 	private $defaultLanguage = "en";
-	private $langage = "en";
+	private $language = "en";
 
 	/* Construct */
 	function __construct() {
@@ -53,16 +53,23 @@ class Language {
 		}
 		// POST / SESSION
 		if(!$find) {
-			if(isset($_POST['selected-language'])) {
+			if(isset($_POST['selected-language']) && !empty($_POST['selected-language'])) {
 				$lang = $_POST['selected-language'];
-			} elseif(isset($_POST['langue'])) {
+			} elseif(isset($_POST['langue']) && !empty($_POST['langue'])) {
 				$lang = $_POST['langue'];
-			} elseif(isset($_SESSION['lang'])) {
+			} elseif(isset($_SESSION['lang']) && !empty($_SESSION['lang'])) {
 				$lang = $_SESSION['lang'];	
 			} else {
 				$lang = "";
 			}
-			$find = array_search($lang, $this->languageList);
+
+			$find = false;
+			foreach ($this->languageList as $key => $value) {
+				if($key == $lang || $value == $lang) {
+					$find = $key;
+					break;
+				}
+			}
 		}
 
 		if(!$find) { $this->language = $this->defaultLanguage; }
