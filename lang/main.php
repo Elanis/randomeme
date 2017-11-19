@@ -83,7 +83,7 @@ class Language {
 	 *
 	 * @return     <type>  The language.
 	 */
-	private function getLanguage() {
+	public function getLanguage() {
 		return $this->language;
 	}
 	/* importLanguageFiles 
