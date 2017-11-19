@@ -77,6 +77,15 @@ class Language {
 
 		$_SESSION['lang'] = $this->language;
 	}
+
+	/**
+	 * Gets the language.
+	 *
+	 * @return     <type>  The language.
+	 */
+	private function getLanguage() {
+		return $this->language;
+	}
 	/* importLanguageFiles 
 	Importation des fichiers de language
 	INPUT: -
