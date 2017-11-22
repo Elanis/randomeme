@@ -1,9 +1,13 @@
 <?php
-/* File_Find
-Folders/File Finding
-INPUT: Folder, List of extensions
-OUTPUT: 4D Table
-*/
+/**
+ * List files in folders and its subfolders by extension
+ *
+ * @param      array  $folderlist  Folder list
+ * @param      array  $ext         Extension list
+ *
+ * @return     array   List of files (in 'files') and list 
+ * of folders (in 'folders')
+ */
 function File_Find($folderlist, $ext) {
 	$filelist = array();
 

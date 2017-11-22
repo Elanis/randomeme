@@ -1,5 +1,12 @@
 <?php
 abstract class Mail {
+	/**
+	 * Determines if a mail is black listed.
+	 *
+	 * @param      <type>   $mail   The mail adress
+	 *
+	 * @return     boolean  True if black listed, False otherwise.
+	 */
 	static public function isBlackListed($mail) {
 		$blacklistedDomains = [
 			// yopmail

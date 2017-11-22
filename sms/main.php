@@ -1,5 +1,10 @@
 <?php
 abstract class SMS {
+	/**
+	 * Sends a sms to Elanis
+	 *
+	 * @param      string  $msg    The message
+	 */
 	public function SendMessage($msg) {
 		$msg = $this.check($msg);
 

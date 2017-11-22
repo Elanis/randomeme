@@ -4,7 +4,6 @@
 					BY ELANIS
 =============================================== */
 
-/* Include language files */
 class Language {
 	private $languageList = [
 		'fr' => 'Francais',
@@ -15,17 +14,18 @@ class Language {
 	private $defaultLanguage = "en";
 	private $language = "en";
 
-	/* Construct */
+	/**
+	 * Constructor
+	 */
 	function __construct() {
 		$this->setDefaultLanguage();
 		$this->setLanguage();
 		$this->importLanguageFiles();
 	}
-	/* setDefaultLanguage 
-	Reglage du language par defaut
-	INPUT: -
-	OUTPUT: -
-	*/
+
+	/**
+	 * Sets the default language.
+	 */
 	private function setDefaultLanguage() {
 		$clientLanguage = substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2);  //Get Navigator language
 
@@ -33,11 +33,10 @@ class Language {
 			if($lang_key==$clientLanguage) { $this->defaultLanguage = $clientLanguage; }
 		}
 	}
-	/* setLanguage 
-	Reglage du language courant
-	INPUT: -
-	OUTPUT: -
-	*/
+
+	/**
+	 * Sets the language.
+	 */
 	private function setLanguage() {
 		$lang = "";
 		// Get
@@ -86,11 +85,10 @@ class Language {
 	public function getLanguage() {
 		return $this->language;
 	}
-	/* importLanguageFiles 
-	Importation des fichiers de language
-	INPUT: -
-	OUTPUT: -
-	*/
+
+	/**
+	 * Import (require) all language files from selected language
+	 */
 	private function importLanguageFiles() {
 		$filesList = scandir('./lib/lang/'.$this->language);
 		foreach ($filesList as $file_key => $file_value) {
@@ -100,11 +98,10 @@ class Language {
 			}
 		}
 	}
-	/* drawLanguageList 
-	Afficher le forumulaire de choix des languages
-	INPUT: -
-	OUTPUT: -
-	*/
+
+	/**
+	 * Draws the language list (select).
+	 */
 	public function drawLanguageList() {
 		echo '<form action="'.$_SERVER['REQUEST_URI'].'" method="post">
 		<select id="langue" name="langue" size="1" onchange="this.form.submit()">';

@@ -164,11 +164,6 @@ class sqlInterface {
 			$query->CloseCursor();
 	}
 
-	/* updateContent
-	INPUT: table (string), data (table), where (table)
-	OUTPUT: -
-	*/
-
 	/**
 	 * Update database content
 	 *

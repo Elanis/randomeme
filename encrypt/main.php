@@ -1,4 +1,11 @@
 <?php
+/**
+ * Hash a text with my custom algorithm
+ *
+ * @param      string  $data   Text need to be hash
+ *
+ * @return     string  Hashed text
+ */
 function encrypt($data) {
 	$token = md5("***REMOVED***");
 	$part1 = sha1($data);
