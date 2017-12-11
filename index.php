@@ -82,6 +82,18 @@ $query->execute();
 $data = $query->fetch();
 $query->CloseCursor();
 
+/**
+ * Ads
+ */
+if(isset($_SESSION['memeViewed']) && is_int($_SESSION['memeViewed']) && $_SESSION['memeViewed'] > 2) {
+	$adChance = $_SESSION['memeViewed'] * 0.07;
+} else if(isset($_SESSION['memeViewed']) && is_int($_SESSION['memeViewed']) && ($_SESSION['memeViewed']==1 || $_SESSION['memeViewed']==2)) {
+	$adChance = 0;
+} else {
+	$adChance = 0;
+	$_SESSION['memeViewed'] = 1;
+}
+
 if($data !== false && !(empty($data)||!isset($data["link"])||empty($data["link"])||$data["link"]==""||(isset($_SESSION['historique'])&&$data["link"]==$_SESSION['historique'] && $f != $data["link"]))) {
 
 /**
@@ -108,18 +120,9 @@ if($data !== false && !(empty($data)||!isset($data["link"])||empty($data["link"]
 	<meta property="og:image:width" content="1280">
 	<meta property="og:image:height" content="720">
 <?php
-}
-/**
- * Ads
- */
-if(isset($_SESSION['memeViewed']) && is_int($_SESSION['memeViewed']) && $_SESSION['memeViewed'] > 2) {
-	$adChance = $_SESSION['memeViewed'] * 0.07;
-} else if(isset($_SESSION['memeViewed']) && is_int($_SESSION['memeViewed']) && ($_SESSION['memeViewed']==1 || $_SESSION['memeViewed']==2)) {
 	$adChance = 0;
-} else {
-	$adChance = 0;
-	$_SESSION['memeViewed'] = 1;
 }
+
 
 if($adChance > mt_rand(0,1)) {
 /**********************
