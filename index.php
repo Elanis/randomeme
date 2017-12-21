@@ -145,7 +145,7 @@ if($adChance > mt_rand(0,1)) {
 			<script type="text/javascript">
 				$(document).ready(function() {
 					if($('#randomAd').length == 0 || $('#randomAd').css('display') == "none") {
-						$('#global-div').html('<p>This website display only one ad each 4 to 14 memes (it\'s random), please disable your adblocker, that\'s our single source of money to pay servers and services needed to make that website works.<br/><br/>Thanks.</p><a href="/" id="reload-page" onclick="window.location.reload(); return;">Get a new meme !</a>'); 
+						$('#global-div').html('<p class="centered-div-p">This website display only one ad each 4 to 14 memes (it\'s random), please disable your adblocker, that\'s our single source of money to pay servers and services needed to make that website works.<br/><br/>Thanks.</p><a href="/" id="reload-page" onclick="window.location.reload(); return;">Get a new meme !</a>'); 
 					}
 				});
 

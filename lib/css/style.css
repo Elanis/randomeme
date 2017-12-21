@@ -198,12 +198,12 @@ header {
 	margin-top: calc(50vh - 140px);
 	margin-left: calc(50vw - 168px);
 }
-.centered-div p {
+.centered-div-p {
 	width: 336px;
 	height: 280px;
 
 	margin-left: calc(50vw - 188px);
-	margin-top: calc(50vh - 140px);
+	margin-top: calc(50vh - 180px);
 
 	padding: 20px;
 
