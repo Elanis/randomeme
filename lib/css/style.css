@@ -216,7 +216,7 @@ header {
 #reload-page {
 	display: inline-block;
 
-	margin-left: calc(50vw - 168px);
+	margin-left: calc(50vw - 168px - 1px - 0.25em);
 
 	text-align: center;
 
