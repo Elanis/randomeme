@@ -143,7 +143,7 @@ if($adChance > mt_rand(0,1)) {
 
 			<script type="text/javascript" src="lib/js/jquery.min.js"></script>
 			<script type="text/javascript">
-				$(document).load(function() {
+				$(document).on("load",function() {
 					if($('.adsbygoogle').length == 0) {
 						$('#global-div').html('<p>This website display only one ad each 4 to 14 memes (it\'s random), please disable your adblocker, that\'s our single source of money to pay servers and services needed to make that website works.<br/><br/>Thanks.</p><a href="/" id="reload-page" onclick="window.location.reload(); return;">Get a new meme !</a>'); 
 					}
