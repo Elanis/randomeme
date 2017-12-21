@@ -85,9 +85,9 @@ $query->CloseCursor();
 /**
  * Ads
  */
-if(isset($_SESSION['memeViewed']) && is_int($_SESSION['memeViewed']) && $_SESSION['memeViewed'] > 2) {
+if(isset($_SESSION['memeViewed']) && is_int($_SESSION['memeViewed']) && $_SESSION['memeViewed'] > 3) {
 	$adChance = $_SESSION['memeViewed'] * 0.07;
-} else if(isset($_SESSION['memeViewed']) && is_int($_SESSION['memeViewed']) && ($_SESSION['memeViewed']==1 || $_SESSION['memeViewed']==2)) {
+} else if(isset($_SESSION['memeViewed']) && is_int($_SESSION['memeViewed']) && ($_SESSION['memeViewed']==1 || $_SESSION['memeViewed']==2 || $_SESSION['memeViewed']==3)) {
 	$adChance = 0;
 } else {
 	$adChance = 0;
@@ -130,7 +130,7 @@ if($adChance > mt_rand(0,1)) {
  **********************/
 ?>
 	<body>
-		<div class="centered-div">
+		<div id="global-div" class="centered-div">
 			<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 			<!-- Randomeme - ads -->
 			<ins class="adsbygoogle"
@@ -139,6 +139,16 @@ if($adChance > mt_rand(0,1)) {
 			     data-ad-slot="***REMOVED***"></ins>
 			<script>
 			(adsbygoogle = window.adsbygoogle || []).push({});
+			</script>
+
+			<script type="text/javascript" src="lib/js/jquery.min.js"></script>
+			<script type="text/javascript">
+				$(document).load(function() {
+					if($('.adsbygoogle').length == 0) {
+						$('#global-div').html('<p>This website display only one ad each 4 to 14 memes (it\'s random), please disable your adblocker, that\'s our single source of money to pay servers and services needed to make that website works.<br/><br/>Thanks.</p><a href="/" id="reload-page" onclick="window.location.reload(); return;">Get a new meme !</a>'); 
+					}
+				});
+
 			</script>
 
 			<a href="/" id="reload-page" onclick="window.location.reload(); return;">Get a new meme !</a>

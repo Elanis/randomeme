@@ -198,6 +198,20 @@ header {
 	margin-top: calc(50vh - 140px);
 	margin-left: calc(50vw - 168px);
 }
+.centered-div p {
+	width: 336px;
+	height: 280px;
+
+	margin-left: calc(50vw - 188px);
+	margin-top: calc(50vh - 140px);
+
+	padding: 20px;
+
+    text-align: center;
+    background: rgb(0,0,0);
+	border: 1px solid white;
+    border-radius: 10px;
+}
 
 #reload-page {
 	display: inline-block;
