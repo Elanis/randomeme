@@ -234,3 +234,6 @@ header {
 	font-weight: bold;
 	background-color: #555555;
 }
+#cookie-prevent {
+	z-index: 10000;
+}
