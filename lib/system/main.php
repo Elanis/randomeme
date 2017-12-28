@@ -1,9 +1,9 @@
 <?php
-/* countCore
-INPUT : -
-OUTPUT : Number of Cores ( int )
-*/
-
+/**
+ * Counts the number of core.
+ *
+ * @return     <type>  Number of core.
+ */
 function countCore()
 {
         if (!($num_cores = shell_exec('/bin/grep -c ^processor /proc/cpuinfo')))
@@ -20,10 +20,11 @@ function countCore()
         return (int)$num_cores;
 }
 
-/* CpuStats
-INPUT: -
-OUTPUT: Informations ( table ) */
-
+/**
+ * Get CPU stats
+ *
+ * @return     array  stats
+ */
 function CpuStats()
 {
 	$cpu = array();
@@ -94,10 +95,11 @@ function CpuStats()
 	return $cpu;
 }
 
-/* SystemStats
-INPUT: -
-OUTPUT: Informations ( table ) */
-
+/**
+ * Gets system stats
+ *
+ * @return     array  stats
+ */
 function SystemStats()
 {
 	$system = array();
@@ -134,10 +136,11 @@ function SystemStats()
 	return $system;
 }
 
-/* MemoryStats
-INPUT: -
-OUTPUT: Informations ( table ) */
-
+/**
+ * Get memory stats
+ *
+ * @return     array  stats
+ */
 function MemoryStats()
 {
 	$memory = array();
@@ -166,10 +169,11 @@ function MemoryStats()
 	
 }
 
-/* SwapStats
-INPUT: -
-OUTPUT: Informations ( table ) */
-
+/**
+ * Get swap stats
+ *
+ * @return     array  stats
+ */
 function SwapStats()
 {
 	$swap = array();
@@ -198,6 +202,12 @@ function SwapStats()
 INPUT: -
 OUPUT: Informations ( table ) 
 */
+
+/**
+ * Get disk usage
+ *
+ * @return     array  usage
+ */
 function DiskUsage()
 {
 	$disk = array();

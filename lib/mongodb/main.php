@@ -7,6 +7,11 @@
 class mongoInterface {
 	private $manager;
 
+	/**
+	 * Connect to a database
+	 *
+	 * @param      string  $dbURL  The database url
+	 */
 	private function connect($dbURL) {
 		if($dbURL==""||!isset($dbURL)) { //Wrong Use !
 			echo "DATABASE ERROR: All needed informations are not given !";
@@ -35,6 +40,15 @@ class mongoInterface {
 		$this->connect($dbURL); //Il faut se connecter à la BDD
     }
 
+	/**
+	 * Gets the content depends on a condition
+	 *
+	 * @param      string  $db      The database name
+	 * @param      string  $doc     The document name
+	 * @param      string  $filter  The filter
+	 *
+	 * @return     array   Query return
+	 */
 	public function getCondContent($db,$doc,$filter) {
 		if(is_string($db) && is_string($doc) && is_array($filter)) {
 			$query = new MongoDB\Driver\Query($filter);
@@ -50,6 +64,13 @@ class mongoInterface {
 
 	}
 
+	/**
+	 * Adds content to database
+	 *
+	 * @param      string  $db       The database name
+	 * @param      string  $doc      The document name
+	 * @param      array   $content  The content needs to be inserted
+	 */
 	public function addContent($db,$doc,$content) {
 		$bulkUsers = new MongoDB\Driver\BulkWrite(['ordered' => true]);
 		$bulkUsers->insert($content);

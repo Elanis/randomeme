@@ -164,11 +164,6 @@ class sqlInterface {
 			$query->CloseCursor();
 	}
 
-	/* updateContent
-	INPUT: table (string), data (table), where (table)
-	OUTPUT: -
-	*/
-
 	/**
 	 * Update database content
 	 *
@@ -308,7 +303,7 @@ class sqlInterface {
 			$query = $this->bd->prepare($query);
 
 			foreach($bindValue as $name => $value) {
-				if(is_int($value) && is_bool($value)) {
+				if(is_int($value) || is_bool($value)) {
 					$pdoType = PDO::PARAM_INT;
 				} else {
 					$pdoType = PDO::PARAM_STR;
@@ -350,7 +345,7 @@ class sqlInterface {
 			$query = $this->bd->prepare($query);
 
 			foreach($bindValue as $name => $value) {
-				if(is_int($value) && is_bool($value)) {
+				if(is_int($value) || is_bool($value)) {
 					$pdoType = PDO::PARAM_INT;
 				} else {
 					$pdoType = PDO::PARAM_STR;

@@ -1,5 +1,10 @@
 <script src='https://www.google.com/recaptcha/api.js'></script>
 <?php
+/**
+ * Draws a captcha.
+ *
+ * @param      string  $publicKey  The public key
+ */
 function DrawCaptcha($publicKey) {
 	echo'<div class="g-recaptcha" data-sitekey="'.$publicKey.'"></div>';
 }

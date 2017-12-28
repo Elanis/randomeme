@@ -1,10 +1,13 @@
 <?php
 /******* Fonctions en Interface avec le Web ********/
 
-/* siteStatus
-INPUT : site ( string )
-OUTPUT : online ( bool ) */
-
+/**
+ * Check if a website is online
+ *
+ * @param      string  $site   Website adress
+ *
+ * @return     bool  online or not
+ */
 function siteStatus($site)
 {
 	$fp = @fsockopen($site, 80, $errno, $errstr, 1);
@@ -12,10 +15,14 @@ function siteStatus($site)
 	return $fp;
 }
 
-/* serverStatus
-INPUT : server ( string ) , port ( string )
-OUTPUT : online ( bool ) */
-
+/**
+ * Check if a server is online
+ *
+ * @param      <type>  $server  server adress
+ * @param      <type>  $port    server port
+ *
+ * @return     bool    online or not
+ */
 function serverStatus($server,$port)
 {
 	$fp = @fsockopen($server,$port, $errno, $errstr, 1);
@@ -25,10 +32,11 @@ function serverStatus($server,$port)
 	return $online;
 }
 
-/* averagePing
-INPUT : -
-OUTPUT : average ping ( int ) */
-
+/**
+ * Gets average ping
+ *
+ * @return     integer  average ping
+ */
 function averagePing() {
 	$hosts = array('google.com', 'wikipedia.org','twitter.com');
 	
@@ -48,10 +56,11 @@ function averagePing() {
 	return $aping;
 }
 
-/* ipConfig
-INPUT: -
-OUPUT: ip's ( table ) */
-
+/**
+ * Get local and wan ip
+ *
+ * @return     array  data
+ */
 function ipConfig()
 {
 	$ipa = array();

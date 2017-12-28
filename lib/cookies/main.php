@@ -1,7 +1,10 @@
 <?php // Librairie de modification des cookies ?>
 <script src='./lib/cookies/main.js'></script>
 
-<?php // Message de prevention
+<?php
+/**
+ * Draws a cookie prevention panel.
+ */
 function drawCookiePreventionPanel() {
 	/* Get Vars from Config */
 	global $config;
@@ -43,6 +46,7 @@ function drawCookiePreventionPanel() {
 				position: absolute;
 				right: 5px; 
 				bottom: calc(50% - 0.5em);
+				cursor: pointer;
 			}
 		</style>
 		<?php

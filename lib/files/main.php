@@ -1,9 +1,13 @@
 <?php
-/* File_Find
-Folders/File Finding
-INPUT: Folder, List of extensions
-OUTPUT: 4D Table
-*/
+/**
+ * List files in folders and its subfolders by extension
+ *
+ * @param      array  $folderlist  Folder list
+ * @param      array  $ext         Extension list
+ *
+ * @return     array   List of files (in 'files') and list 
+ * of folders (in 'folders')
+ */
 function File_Find($folderlist, $ext) {
 	$filelist = array();
 
@@ -30,7 +34,7 @@ function File_Find($folderlist, $ext) {
 				{
 					$words = explode(".",$scan[$j]);
 
-					if(empty($words[count($words)-1])) //Then it's a folder ( no extension )
+					if(empty($words[1])) //Then it's a folder ( no extension )
 					{
 						if($scan[$j]==".."||$scan[$j]=="."||$scan[$j]=="") {
 						//Don't add it !!
