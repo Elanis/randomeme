@@ -46,6 +46,7 @@ function drawCookiePreventionPanel() {
 				position: absolute;
 				right: 5px; 
 				bottom: calc(50% - 0.5em);
+				cursor: pointer;
 			}
 		</style>
 		<?php
