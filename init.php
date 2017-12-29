@@ -24,7 +24,22 @@ function LoadIt() {
 	global $mongoDB;
 	global $lang;
 	global $user;
+	global $currentpage;
 
+	/* Detect current page, used for cache and some modules */
+		$currentpage = explode("?",$_SERVER['REQUEST_URI'])[0];
+		// Strtolower
+		$currentpage = strtolower($currentpage);
+		// Strip .* et /
+		$currentpage = str_replace(".php", "", $currentpage);
+		$currentpage = str_replace(".html", "", $currentpage);
+		$currentpage = str_replace(".htm", "", $currentpage);
+		$currentpage = str_replace("/", "", $currentpage);
+		// Index verif
+		if($currentpage=="") {
+		    $currentpage = "index";
+		}
+		
 	/* Include all modules */
 	foreach ($config as $config_key => $config_value) {
 		if(strpos($config_key, 'module_') !== false && $config_value==true) {
@@ -59,7 +74,12 @@ function LoadIt() {
 		$_SESSION['default-maxperpage'] = $config['website_default-maxperpage'];
 	}
 
-	echo "<title>".$config['website_name']."</title>";
+	if(isset($config['website_custom_name'][$currentpage])) {
+		echo "<title>".$config['website_custom_name'][$currentpage]."</title>";
+	} else {
+		echo "<title>".$config['website_name']."</title>";
+	}
+	
 
 	if(!isset($config['website_css']) || $config['website_css']=="") {
 		$config['website_css'] = "./lib/css/style.css";
