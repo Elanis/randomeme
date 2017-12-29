@@ -24,7 +24,22 @@ function LoadIt() {
 	global $mongoDB;
 	global $lang;
 	global $user;
+	global $currentpage;
 
+	/* Detect current page, used for cache and some modules */
+		$currentpage = explode("?",$_SERVER['REQUEST_URI'])[0];
+		// Strtolower
+		$currentpage = strtolower($currentpage);
+		// Strip .* et /
+		$currentpage = str_replace(".php", "", $currentpage);
+		$currentpage = str_replace(".html", "", $currentpage);
+		$currentpage = str_replace(".htm", "", $currentpage);
+		$currentpage = str_replace("/", "", $currentpage);
+		// Index verif
+		if($currentpage=="") {
+		    $currentpage = "index";
+		}
+		
 	/* Include all modules */
 	foreach ($config as $config_key => $config_value) {
 		if(strpos($config_key, 'module_') !== false && $config_value==true) {
@@ -59,7 +74,11 @@ function LoadIt() {
 		$_SESSION['default-maxperpage'] = $config['website_default-maxperpage'];
 	}
 
-	echo "<title>".$config['website_name']."</title>";
+	if(isset($config['website_custom_name'][$currentpage])) {
+		echo "<title>".$config['website_custom_name'][$currentpage]."</title>";
+	} else {
+		echo "<title>".$config['website_name']."</title>";
+	}
 
 	if(!isset($config['website_css']) || $config['website_css']=="") {
 		$config['website_css'] = "./lib/css/style.css";
@@ -72,11 +91,23 @@ function LoadIt() {
 	if(isset($config['website_theme_color']) && (strlen($config['website_theme_color'])==7 || strlen($config['website_theme_color'])==4)) {
 		echo '<meta name="theme-color" content="'.$config['website_theme_color'].'">';
 	}
+
+	if(isset($config['website_custom_keywords'][$currentpage])) {
+		$keywords = $config['website_custom_keywords'][$currentpage];
+	} else {
+		$keywords = META_KEYS;
+	}
+
+	if(isset($config['website_custom_keywords'][$currentpage])) {
+		$description = $config['website_custom_desc'][$currentpage];
+	} else {
+		$description = META_DESC;
+	}
 ?>
 <meta charset="UTF-8">
 <!-- On prepare le charset , les mots clés , le fichier css et l'icone du site -->
-<meta name="keywords" content="<?php echo META_KEYS; ?>">
-<meta name="description" content="<?php echo META_DESC; ?>" />
+<meta name="keywords" content="<?php echo $keywords; ?>">
+<meta name="description" content="<?php echo $description; ?>" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <link rel="shortcut icon" type="image/png" href="<?php echo $config['website_favicon']; ?>"/>
