@@ -98,7 +98,7 @@ function LoadIt() {
 		$keywords = META_KEYS;
 	}
 
-	if(isset($config['website_custom_keywords'][$currentpage])) {
+	if(isset($config['website_custom_desc'][$currentpage])) {
 		$description = $config['website_custom_desc'][$currentpage];
 	} else {
 		$description = META_DESC;
