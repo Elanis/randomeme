@@ -79,7 +79,6 @@ function LoadIt() {
 	} else {
 		echo "<title>".$config['website_name']."</title>";
 	}
-	
 
 	if(!isset($config['website_css']) || $config['website_css']=="") {
 		$config['website_css'] = "./lib/css/style.css";
@@ -92,11 +91,23 @@ function LoadIt() {
 	if(isset($config['website_theme_color']) && (strlen($config['website_theme_color'])==7 || strlen($config['website_theme_color'])==4)) {
 		echo '<meta name="theme-color" content="'.$config['website_theme_color'].'">';
 	}
+
+	if(isset($config['website_custom_keywords'][$currentpage])) {
+		$keywords = $config['website_custom_keywords'][$currentpage];
+	} else {
+		$keywords = META_KEYS;
+	}
+
+	if(isset($config['website_custom_keywords'][$currentpage])) {
+		$description = $config['website_custom_desc'][$currentpage];
+	} else {
+		$description = META_DESC;
+	}
 ?>
 <meta charset="UTF-8">
 <!-- On prepare le charset , les mots clés , le fichier css et l'icone du site -->
-<meta name="keywords" content="<?php echo META_KEYS; ?>">
-<meta name="description" content="<?php echo META_DESC; ?>" />
+<meta name="keywords" content="<?php echo $keywords; ?>">
+<meta name="description" content="<?php echo $description; ?>" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <link rel="shortcut icon" type="image/png" href="<?php echo $config['website_favicon']; ?>"/>
