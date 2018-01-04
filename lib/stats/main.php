@@ -45,7 +45,7 @@ function full_url( $s, $use_forwarded_host = false )
 }
 
 if(!isset($_SESSION['visited']) || $_SESSION['visited']!=$_SERVER['REQUEST_URI']) {
-    $manager = new MongoDB\Driver\Manager("***REMOVED***");
+    $manager = new MongoDB\Driver\Manager("mongodb://***REMOVED***:***REMOVED***@mongo-server:27017");
 
     $visit = [];
     if(strstr(strtolower($_SERVER['HTTP_USER_AGENT']), "googlebot"))
