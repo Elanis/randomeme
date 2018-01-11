@@ -108,7 +108,6 @@ if($data !== false && !(empty($data)||!isset($data["link"])||empty($data["link"]
 	<meta name="twitter:player:width" content="1920" />
 	<meta name="twitter:player:height" content="1080" />
 
-	<meta property="og:og:site_name" content="Randomeme" />
 	<meta property="og:title" content="Randomeme - <?php echo $data["nom"]; ?>" />
 	<meta property="og:type" content="video.other" />
 	<meta property="og:image" content="***REMOVED***/img/background.png" />
