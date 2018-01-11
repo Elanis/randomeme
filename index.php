@@ -108,17 +108,17 @@ if($data !== false && !(empty($data)||!isset($data["link"])||empty($data["link"]
 	<meta name="twitter:player:width" content="1920" />
 	<meta name="twitter:player:height" content="1080" />
 
-	<meta property="og:og:site_name" content="Randomeme">
-	<meta property="og:title" content="Randomeme - <?php echo $data["nom"]; ?>">
-	<meta property="og:type" content="video.other">
-	<meta property="og:image" content="***REMOVED***/img/background.png">
-	<meta property="og:url" content="***REMOVED***/<?php echo $data["link"]; ?>">
-	<meta property="og:video" content="https://***REMOVED***/randomeme/<?php echo $data["link"]; ?>.mp4">
-	<meta property="og:video:url" content="https://***REMOVED***/randomeme/<?php echo $data["link"]; ?>.mp4">
-	<meta property="og:video:secure_url" content="https://***REMOVED***/randomeme/<?php echo $data["link"]; ?>.mp4">
+	<meta property="og:og:site_name" content="Randomeme" />
+	<meta property="og:title" content="Randomeme - <?php echo $data["nom"]; ?>" />
+	<meta property="og:type" content="video.other" />
+	<meta property="og:image" content="***REMOVED***/img/background.png" />
+	<meta property="og:url" content="***REMOVED***/<?php echo $data["link"]; ?>" />
+	<meta property="og:video" content="https://***REMOVED***/randomeme/<?php echo $data["link"]; ?>.mp4" />
+	<meta property="og:video:url" content="https://***REMOVED***/randomeme/<?php echo $data["link"]; ?>.mp4" />
+	<meta property="og:video:secure_url" content="https://***REMOVED***/randomeme/<?php echo $data["link"]; ?>.mp4" />
 	<meta property="og:video:type" content="video/mp4" />
-	<meta property="og:image:width" content="1280">
-	<meta property="og:image:height" content="720">
+	<meta property="og:image:width" content="1280" />
+	<meta property="og:image:height" content="720" />
 <?php
 	$adChance = 0;
 }
@@ -129,7 +129,6 @@ if($adChance > mt_rand(0,1)) {
  * Code HTML
  **********************/
 ?>
-	<body>
 		<div id="global-div" class="centered-div">
 			<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 			<!-- Randomeme - ads -->
