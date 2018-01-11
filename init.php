@@ -116,10 +116,13 @@ function LoadIt() {
 <?php
 }
 echo $config['website_custom_head'];
+
+if(!isset($config['website_disable_head_end']) || $config['website_disable_head_end'] == false) {
 ?>
 </head>
 <body>
 <?php
+}
 	/* Cookies prevention panel */
 	if($config['module_cookies']) {
 		drawCookiePreventionPanel();
