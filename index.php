@@ -129,6 +129,8 @@ if($adChance > mt_rand(0,1)) {
  * Code HTML
  **********************/
 ?>
+		</head>
+		<body>
 		<div id="global-div" class="centered-div">
 			<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 			<!-- Randomeme - ads -->
