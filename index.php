@@ -108,6 +108,8 @@ if($data !== false && !(empty($data)||!isset($data["link"])||empty($data["link"]
 	<meta name="twitter:player:width" content="1920" />
 	<meta name="twitter:player:height" content="1080" />
 
+	<meta property="fb:app_id" content="***REMOVED***">
+
 	<meta property="og:title" content="Randomeme - <?php echo $data["nom"]; ?>" />
 	<meta property="og:description" content="Get a random and funny meme !" />
 	<meta property="og:type" content="video.other" />
