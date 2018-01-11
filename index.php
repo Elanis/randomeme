@@ -181,7 +181,8 @@ $_SERVER['REQUEST_URI'] = ($f==$data["link"])?$data["link"]:"random-".$data["lin
  * Code HTML
  **********************/
 ?>
-	<body>
+		</head>
+		<body>
 		<div id="fb-root"></div>
 
 		<header>
