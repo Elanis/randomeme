@@ -115,9 +115,9 @@ if($data !== false && !(empty($data)||!isset($data["link"])||empty($data["link"]
 	<meta property="og:type" content="video.other" />
 	<meta property="og:image" content="***REMOVED***/img/background.png" />
 	<meta property="og:url" content="***REMOVED***/<?php echo $data["link"]; ?>" />
+	<meta property="og:video:type" content="video/mp4" />
 	<meta property="og:video" content="https://***REMOVED***/randomeme/<?php echo $data["link"]; ?>.mp4" />
 	<meta property="og:video:secure_url" content="https://***REMOVED***/randomeme/<?php echo $data["link"]; ?>.mp4" />
-	<meta property="og:video:type" content="video/mp4" />
 	<meta property="og:video:width" content="1920" />
 	<meta property="og:video:height" content="1080" />
 <?php
