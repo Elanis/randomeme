@@ -196,6 +196,9 @@ $_SERVER['REQUEST_URI'] = ($f==$data["link"])?$data["link"]:"random-".$data["lin
 				<!-- Facebook -->
 				<div class="fb-share-button" data-href="***REMOVED***/<?php echo $data["link"]; ?>" data-layout="button" data-size="small" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Frandomeme.xyz%2F<?php echo $data["link"]; ?>&amp;src=sdkpreparse">Share</a></div>
 
+				<!-- Add bot to your discord server -->
+				<a href="***REMOVED***"><img alt="add bot to your discord" src="img/discord.png"></a>
+
 				<!-- Get new meme -->
 				<img alt="get new meme" src="img/get-new.png" id="get-new">
 
