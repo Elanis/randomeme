@@ -237,13 +237,12 @@ header {
 		display: none;
 	}
 	#buttons img, #twitter-widget-0, .fb-share-button {
-		margin: 0.5em 0;
+		margin: 0.5em auto;
 
 		display: block;
 	}
 	#buttons img {
 		width: 30px;
-		margin: 0.5em auto;
 	}
 	#hamburger {
 		float: right;
@@ -296,11 +295,10 @@ header {
 
 
 .fb-share-button {
-  height: 20px !important;
+	height: 20px !important;
 }
 .fb-share-button * {
-  position: relative !important;
-  top: -4px;
+	top: -3px;
 }
 
 .centered-div {
