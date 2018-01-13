@@ -1,69 +1,72 @@
-body
-{
+/**
+ * Fonts
+ */
+@import url('https://fonts.googleapis.com/css?family=Roboto+Condensed');
+
+/**
+ * Main design
+ */
+body {
 	background-color: black;
 	background-image: url('../../img/background.png');
 	background-attachment: fixed;
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: cover;
-	font-family: Segoe UI Light;
-	font-size: 1.3em;
+
+	font-family: 'Roboto Condensed', sans-serif;
 	color: white;
-	font-weight: bold;
 }
-#audio {
-	display: none;
-}
-#video {
+#play { /* Play button */
 	position: fixed;
 	top: 50%;
 	left: 50%;
-	min-width: 100%;
-	min-height: 100%;
-	width: auto;
-	height: auto;
-	-ms-transform: translateX(-50%) translateY(-50%);
-	-moz-transform: translateX(-50%) translateY(-50%);
-	-webkit-transform: translateX(-50%) translateY(-50%);
-	transform: translateX(-50%) translateY(-50%);
-	border: 0;
-	margin: 0;
-	padding: 0;
-}
-#play {
-	position: fixed;
-	opacity: 0.65;
-	top: 50%;
-	left: 50%;
+
 	width: 20%;
 	max-width: 256px;
+
 	-ms-transform: translateX(-50%) translateY(-50%);
 	-moz-transform: translateX(-50%) translateY(-50%);
 	-webkit-transform: translateX(-50%) translateY(-50%);
 	transform: translateX(-50%) translateY(-50%);
+
 	z-index: 101;
+
+	opacity: 0.65;
 	display: none; /* That's Just for android */
 }
+#detach-button.visible { /* Opera Support: This hide detach video button */
+	display: none !important;
+}
+
+/**
+ * Link copy
+ */
 #link-to-copy {
 	opacity: 0;
 }
 #link-overlay {
-	display: none;
-	background-color: rgba(0,0,0,0.75);
 	position: fixed;
-	width: 300px;
-	height: 3em;
-	line-height: 3em;
-	font-size: 2em;
-	text-align: center;
 	top: calc(50% - 1.5em);
 	left: calc(50% - 150px);
-	z-index: 101;
+
+	width: 300px;
+	height: 3em;
+
+	display: none;
+	background-color: rgba(0,0,0,0.75);
+	
 	-moz-box-shadow: 0px 0px 100px 100px rgba(0,0,0,0.75);
 	-webkit-box-shadow: 0px 0px 100px 100px rgba(0,0,0,0.75);
 	-o-box-shadow: 0px 0px 100px 100px rgba(0,0,0,0.75);
 	box-shadow: 0px 0px 100px 100px rgba(0,0,0,0.75);
 	filter:progid:DXImageTransform.Microsoft.Shadow(color=rgba(0,0,0,0.75), Direction=NaN, Strength=100);
+
+	line-height: 3em;
+	font-size: 2em;
+	text-align: center;
+
+	z-index: 101;
 }
 @-webkit-keyframes fadeOut {
 	from {
@@ -81,9 +84,11 @@ body
 }
 .fade-out {
 	display: block !important;
+
 	-webkit-animation-name: fadeOut;
 	animation-name: fadeOut;
 	animation-duration: 0.5s;
+
 	opacity: 0;
 }
 
@@ -103,78 +108,193 @@ body
 }
 .fade-in {
 	display: block !important;
+
 	-webkit-animation-name: fadeIn;
 	animation-name: fadeIn;
 	animation-duration: 0.5s;
+
 	opacity: 1;
 }
-/* Opera Support */
-#detach-button.visible {
-	display: none !important;
+
+/**
+ * Video
+ */
+#video {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+
+	min-width: 100%;
+	min-height: 100%;
+	width: auto;
+	height: auto;
+
+	-ms-transform: translateX(-50%) translateY(-50%);
+	-moz-transform: translateX(-50%) translateY(-50%);
+	-webkit-transform: translateX(-50%) translateY(-50%);
+	transform: translateX(-50%) translateY(-50%);
+
+	border: 0;
+	margin: 0;
+	padding: 0;
 }
 
-/* Footers */
+/**
+ * Audio
+ */
+#audio {
+	display: none;
+}
+
+/**
+ * Footer
+ */
 footer {
-	font-size: 0.5em ! important;
 	position: fixed;
 	bottom: 0;
 	left: 0;
-	width: 100%;
-	padding: 5px;
+	right: 0;
+
+	padding: 0.5em;
+
+	text-align: center;
+
 	background-color: rgba(0,0,0,0.65);
 	z-index: 101;
 }
 footer a {
 	color: white;
-	text-decoration: none;
-}
-footer a:hover {
-	text-decoration: underline;
-}
-.credits {
-	float: left;
-	padding-right: 25px;
-	max-width: 74s%;
-}
-.author {
-	padding-left: 25px;
-	float: right;
-	margin-right: 10px;
-	max-width: 24%;
 }
 
-/* Header */
+/**
+ * Header
+ */
 header {
 	position: fixed;
-	left: 0;
 	top: 0;
-	width: 100%;
+	left: 0;
+	right: 0;
+
+	padding: 0.5em;
+
 	background-color: rgba(0,0,0,0.65);
 	z-index: 101;
 }
+#buttons {
+	float: right;
+}
+#buttons * {
+	vertical-align: middle;
+}
+#buttons, #title {
+	display: inline-block;
+	line-height: 30px;
+}
 #title {
-	float: left;
-	max-width: 49%;
-	padding: 2px;
-	padding-right: 50px;
-	padding-left: 15px;
+	font-size: 1.3em;
+
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden
 }
 
-#buttons{
+@media (min-width: 600px) { /* Ecrans larges */
+	#title {
+		width: 50%;
+	}
+	#buttons {
+		display: block !important;
+	}
+	#buttons img {
+		display: inline-block;
+
+		margin-left: 0.2em;
+
+		cursor: pointer;
+	}
+	#hamburger {
+		display: none;
+	}
+}
+@media (max-width: 599px) { /* Petits Ecrans */
+	#title, #hamburger {
+		vertical-align: middle;
+	}
+	#title {
+		width: calc(100% - 0.5em - 30px);
+	}
+	#buttons {
+		position: fixed;
+		right: 0;
+		top: calc(30px + 1em);
+
+		padding: 0 0.5em;
+
+		background-color: rgba(0,0,0,0.65);
+
+		z-index: 1000;
+
+		display: none;
+	}
+	#buttons img, #twitter-widget-0, .fb-share-button {
+		margin: 0.5em 0;
+
+		display: block;
+	}
+	#buttons img {
+		width: 30px;
+		margin: 0.5em auto;
+	}
+	#hamburger {
+		float: right;
+
+		display: inline-block;
+	}
+}
+
+/**
+ * Discord Bot & Credits
+ */
+#discord-bot, #credits-details {
+	position: fixed;
+
+	top: calc(30px + 1em);
+	bottom: 2em;
+	left: 0;
+	right: 0;
+
+	background-color: rgba(0,0,0,0.85);
+
+	display: none;
+}
+@media (min-width: 600px) { /* Ecrans larges */
+	#discord-bot-desc, #credits-details-desc {
+		margin: 0 auto;
+
+		padding: 25px 15px;
+
+		width: 500px;
+	}
+}
+@media (max-width: 599px) { /* Petits Ecrans */
+	#discord-bot-desc, #credits-details-desc {
+		padding: 25px 15px;
+
+		width: calc(100% - 30px);
+		height: calc(100% - 50px);
+	}
+}
+#discord-bot-close, #credits-details-close {
 	float: right;
-	max-width: 49%;
-	padding: 2px;
-	padding-left: 50px;
-	padding-left: 15px;
+
+	font-size: 1.5em;
+	cursor: pointer;
 }
-#buttons img {
-	width: 27px;
-	margin-left: 3px;
-	margin-right: 3px;
+#discord-bot a, #credits-details a {
+	color: white;
 }
-#buttons img:hover {
-  cursor: pointer;
-}
+
+
 .fb-share-button {
   height: 20px !important;
 }

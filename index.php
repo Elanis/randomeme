@@ -100,26 +100,26 @@ if($data !== false && !(empty($data)||!isset($data["link"])||empty($data["link"]
  * Twitter cards
  */
 ?>
-	<meta name="twitter:card" content="player" />
-	<meta name="twitter:creator" content="@ElanisGaming" />
-	<meta name="twitter:title" content="<?php echo $data["nom"]; ?>" />
-	<meta name="twitter:image" content="***REMOVED***/img/background.png" />
-	<meta name="twitter:player" content="***REMOVED***/twitter-player/?v=<?php echo $data["link"]; ?>" />
-	<meta name="twitter:player:width" content="1920" />
-	<meta name="twitter:player:height" content="1080" />
+		<meta name="twitter:card" content="player" />
+		<meta name="twitter:creator" content="@ElanisGaming" />
+		<meta name="twitter:title" content="<?php echo $data["nom"]; ?>" />
+		<meta name="twitter:image" content="***REMOVED***/img/background.png" />
+		<meta name="twitter:player" content="***REMOVED***/twitter-player/?v=<?php echo $data["link"]; ?>" />
+		<meta name="twitter:player:width" content="1920" />
+		<meta name="twitter:player:height" content="1080" />
 
-	<meta property="fb:app_id" content="***REMOVED***">
+		<meta property="fb:app_id" content="***REMOVED***">
 
-	<meta property="og:url" content="***REMOVED***/<?php echo $data["link"]; ?>" />
-	<meta property="og:type" content="video.other" />
-	<meta property="og:title" content="Randomeme - <?php echo $data["nom"]; ?>" />
-	<meta property="og:image" content="***REMOVED***/img/background.png" />
-	<meta property="og:video:type" content="video/mp4" />
-	<meta property="og:video" content="https://***REMOVED***/randomeme/<?php echo $data["link"]; ?>.mp4" />
-	<meta property="og:video:secure_url" content="https://***REMOVED***/randomeme/<?php echo $data["link"]; ?>.mp4" />
-	<meta property="og:video:width" content="1920" />
-	<meta property="og:video:height" content="1080" />
-	<meta property="og:description" content="Get a random and funny meme !" />
+		<meta property="og:url" content="***REMOVED***/<?php echo $data["link"]; ?>" />
+		<meta property="og:type" content="video.other" />
+		<meta property="og:title" content="Randomeme - <?php echo $data["nom"]; ?>" />
+		<meta property="og:image" content="***REMOVED***/img/background.png" />
+		<meta property="og:video:type" content="video/mp4" />
+		<meta property="og:video" content="https://***REMOVED***/randomeme/<?php echo $data["link"]; ?>.mp4" />
+		<meta property="og:video:secure_url" content="https://***REMOVED***/randomeme/<?php echo $data["link"]; ?>.mp4" />
+		<meta property="og:video:width" content="1920" />
+		<meta property="og:video:height" content="1080" />
+		<meta property="og:description" content="Get a random and funny meme !" />
 <?php
 	$adChance = 0;
 }
@@ -130,8 +130,8 @@ if($adChance > mt_rand(0,1)) {
  * Code HTML
  **********************/
 ?>
-		</head>
-		<body>
+	</head>
+	<body>
 		<div id="global-div" class="centered-div">
 			<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 			<!-- Randomeme - ads -->
@@ -182,8 +182,8 @@ $_SERVER['REQUEST_URI'] = ($f==$data["link"])?$data["link"]:"random-".$data["lin
  * Code HTML
  **********************/
 ?>
-		</head>
-		<body>
+	</head>
+	<body>
 		<div id="fb-root"></div>
 
 		<header>
@@ -197,7 +197,7 @@ $_SERVER['REQUEST_URI'] = ($f==$data["link"])?$data["link"]:"random-".$data["lin
 				<div class="fb-share-button" data-href="***REMOVED***/<?php echo $data["link"]; ?>" data-layout="button" data-size="small" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Frandomeme.xyz%2F<?php echo $data["link"]; ?>&amp;src=sdkpreparse">Share</a></div>
 
 				<!-- Add bot to your discord server -->
-				<a href="***REMOVED***"><img alt="add bot to your discord" src="img/discord.png"></a>
+				<img alt="add bot to your discord" id="discord" src="img/discord.png">
 
 				<!-- Get new meme -->
 				<img alt="get new meme" src="img/get-new.png" id="get-new">
@@ -232,7 +232,6 @@ $_SERVER['REQUEST_URI'] = ($f==$data["link"])?$data["link"]:"random-".$data["lin
 					metadata	The author thinks that the browser should load only metadata when the page loads
 					none	The author thinks that the browser should NOT load the video when the page loads
 				-->
-				<div id="adContainer"></div>
 				<img id="play" src="img/play.png">
 			<?php
 			break;
@@ -250,28 +249,57 @@ $_SERVER['REQUEST_URI'] = ($f==$data["link"])?$data["link"]:"random-".$data["lin
 			default: // Wtf ?!
 				echo "ERROR: Wrong media Type";
 		} ?>
-		<!-- Footer -->
-		<footer>
-			<div class="credits">
-			Copyright 2016 - <?php echo date("Y"); ?> - <a href="***REMOVED***/" target="_blank">Website By Elanis</a> - All contents are property of their own creators - If you want add/modify/delete content, please contact me. - <a href="***REMOVED***/contact.php" target="_blank">Contact</a>
-			- This video is distributed under  
-				<?php 
-				if(!empty($data["copyrightLink"])&&$data["copyrightLink"]!="") {
-					echo "<a href=\"".$data["copyrightLink"]."\" target=\"_blank\">".$data["copyrightType"]."</a>";
-				} else {
-					echo $data["copyrightType"];
-				}
-				?> license.</div>
-			<div class="author">
-			By 
-				<?php 
+		<!-- Discord bot -->
+		<div id="discord-bot">
+			<div id="discord-bot-desc">
+				<span id="discord-bot-close">X</span>
+				<h3>How to add "Randomeme.xyz" bot to your discord server ?</h3>
+
+				<ol>
+					<li>Click <a href="***REMOVED***" target="_blank">Here</a> to open discord bot page.</li>
+					<li>Connect to your discord account if needed</li>
+					<li>Choose the server where you want our bot in "Select a server".</li>
+					<li>Keep permissions checked</li>
+					<li>Click Authorize</li>
+					<li>Have fun !</li>
+				</ol>
+
+				<h3>Available commands</h3>
+
+				<b>!meme</b>, <b>!randomeme</b>, <b>!random meme</b>: Send a message with a random meme like the website itself.
+			</div>
+		</div>
+
+		<!-- Credits -->
+		<div id="credits-details">
+			<div id="credits-details-desc">
+				<span id="credits-details-close">X</span>
+				<h3>Website</h3>
+				<p>This website was created by Elanis - You can contact me <a href="***REMOVED***/contact">here</a>
+				<br/>
+				<h3>Memes</h3>
+				<p>All memes are the property of their own owner. We don't advertise on content, if you want to modify details on your content or delete your content, you can contact me <a href="***REMOVED***/contact">here</a>.<br/>
+				The current displaying meme (<?php echo $data["nom"]; ?>) belongs to <?php 
 				if(!empty($data["website"])&&$data["website"]!="") {
 					echo "<a href=\"".$data["website"]."\" target=\"_blank\">".$data["author"]."</a>";
 				} else {
 					echo $data["author"];
 				}
-				?> 
+				?>  and is licensed under <?php 
+				if(!empty($data["copyrightLink"])&&$data["copyrightLink"]!="") {
+					echo "<a href=\"".$data["copyrightLink"]."\" target=\"_blank\">".$data["copyrightType"]."</a>";
+				} else {
+					echo $data["copyrightType"];
+				}
+				?> license.
+				</p>
 			</div>
+		</div>
+
+		<!-- Footer -->
+		<footer>
+			Copyright 2016-2018 - Randomeme.xyz - <a href="#credits" id="credits">Credits details</a>
+		</footer>">Credits details</a>
 		</footer>
 		<script type="text/javascript" src="lib/js/jquery.min.js"></script>
 		<script type="text/javascript" src="lib/js/toolbar.js"></script>
