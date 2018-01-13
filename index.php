@@ -210,7 +210,9 @@ $_SERVER['REQUEST_URI'] = ($f==$data["link"])?$data["link"]:"random-".$data["lin
 
 				<!-- Fullscreen button -->
 				<img src="img/fullscreen-expand.png" id="fullscreen" alt="fullscreen">
-			</div>		
+			</div>
+
+			<img alt="hamburger" id="hamburger" src="img/hamburger.png">
 		</header>
 
 		<!-- Link -->
