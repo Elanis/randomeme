@@ -133,7 +133,7 @@ if($adChance > mt_rand(0,1)) {
 	</head>
 	<body>
 		<div id="global-div" class="centered-div">
-			<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+			<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 			<!-- Randomeme - ads -->
 			<ins id="randomAd" class="adsbygoogle"
 			     style="display:inline-block;width:336px;height:280px"
