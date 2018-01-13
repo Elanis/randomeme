@@ -292,7 +292,9 @@ header {
 #discord-bot a, #credits-details a {
 	color: white;
 }
-
+.fb-share-button { /* This prevent some bugs on app */
+	display: inline-block;
+}
 .fb-share-button * {
 	top: -3px;
 }
