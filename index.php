@@ -277,10 +277,10 @@ $_SERVER['REQUEST_URI'] = ($f==$data["link"])?$data["link"]:"random-".$data["lin
 			<div id="credits-details-desc">
 				<span id="credits-details-close">X</span>
 				<h3>Website</h3>
-				<p>This website was created by Elanis - You can contact me <a href="***REMOVED***/contact">here</a>
+				<p>This website was created by Elanis - You can contact me <a href="***REMOVED***/contact" target="_blank">here</a>
 				<br/>
 				<h3>Memes</h3>
-				<p>All memes are the property of their own owner. We don't advertise on content, if you want to modify details on your content or delete your content, you can contact me <a href="***REMOVED***/contact">here</a>.<br/>
+				<p>All memes are the property of their own owner. We don't advertise on content, if you want to modify details on your content or delete your content, you can contact me <a href="***REMOVED***/contact" target="_blank">here</a>.<br/>
 				The current displaying meme (<?php echo $data["nom"]; ?>) belongs to <?php 
 				if(!empty($data["website"])&&$data["website"]!="") {
 					echo "<a href=\"".$data["website"]."\" target=\"_blank\">".$data["author"]."</a>";
