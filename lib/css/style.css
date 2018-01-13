@@ -293,10 +293,6 @@ header {
 	color: white;
 }
 
-
-.fb-share-button {
-	height: 20px !important;
-}
 .fb-share-button * {
 	top: -3px;
 }
