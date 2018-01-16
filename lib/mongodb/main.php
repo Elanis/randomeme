@@ -13,9 +13,9 @@ class mongoInterface {
 	 * @param      string  $dbURL  The database url
 	 */
 	private function connect($dbURL) {
-		if($dbURL==""||!isset($dbURL)) { //Wrong Use !
+		if(!isset($dbURL)||$dbURL=="") { //Wrong Use !
 			echo "DATABASE ERROR: All needed informations are not given !";
-			exit();
+			die();
 		}
 
 		if(!extension_loaded("mongodb")) {
@@ -23,7 +23,7 @@ class mongoInterface {
 			die();
 		} else {
 			try {
-				$this->manager = new MongoDB\Driver\Manager($dburl );
+				$this->manager = new MongoDB\Driver\Manager($dbURL);
 			}
 			catch (Exception $e) {
 			        die('Erreur : ' . $e->getMessage());
