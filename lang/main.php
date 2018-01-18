@@ -27,6 +27,8 @@ class Language {
 	 * Sets the default language.
 	 */
 	private function setDefaultLanguage() {
+		if(!isset($_SERVER['HTTP_ACCEPT_LANGUAGE'])) { $_SERVER['HTTP_ACCEPT_LANGUAGE'] = $this->defaultLanguage; }
+		
 		$clientLanguage = substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2);  //Get Navigator language
 
 		foreach ($this->languageList as $lang_key => $lang_value) {
