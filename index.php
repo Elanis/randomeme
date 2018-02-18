@@ -199,6 +199,9 @@ $_SERVER['REQUEST_URI'] = ($f==$data["link"])?$data["link"]:"random-".$data["lin
 				<!-- Add bot to your discord server -->
 				<img alt="add bot to your discord" id="discord" src="img/discord.png">
 
+				<!-- Play store link -->
+				<a href="https://play.google.com/store/apps/details?id=eu.elanis.randomeme"><img alt="play store" id="play store" src="img/play-store.png"></a>
+
 				<!-- Get new meme -->
 				<img alt="get new meme" src="img/get-new.png" id="get-new">
 
