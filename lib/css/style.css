@@ -198,7 +198,7 @@ header {
 	overflow: hidden
 }
 
-@media (min-width: 600px) { /* Ecrans larges */
+@media (min-width: 675px) { /* Ecrans larges */
 	#title {
 		width: 50%;
 	}
@@ -216,7 +216,7 @@ header {
 		display: none;
 	}
 }
-@media (max-width: 599px) { /* Petits Ecrans */
+@media (max-width: 674px) { /* Petits Ecrans */
 	#title, #hamburger {
 		vertical-align: middle;
 	}
@@ -266,7 +266,7 @@ header {
 
 	display: none;
 }
-@media (min-width: 600px) { /* Ecrans larges */
+@media (min-width: 675px) { /* Ecrans larges */
 	#discord-bot-desc, #credits-details-desc {
 		margin: 0 auto;
 
@@ -275,7 +275,7 @@ header {
 		width: 500px;
 	}
 }
-@media (max-width: 599px) { /* Petits Ecrans */
+@media (max-width: 674px) { /* Petits Ecrans */
 	#discord-bot-desc, #credits-details-desc {
 		padding: 25px 15px;
 
