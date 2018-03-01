@@ -39,7 +39,7 @@ class Language {
 	/**
 	 * Sets the language.
 	 */
-	private function setLanguage() {
+	public function setLanguage() {
 		$lang = "";
 		// Get
 		if(isset($_GET["lang"])) {
